@@ -12,6 +12,8 @@ namespace GraphicalProgrammingEnvironment
      // the graphics context is the area of the form to draw on
      Graphics myGraph;
      Pen myPen;
+     // the position of the pen when drawing
+     int xPos, yPos;
 
      /// <summary>
      /// Constructor initialises canvas.
@@ -32,12 +34,16 @@ namespace GraphicalProgrammingEnvironment
      public void DrawLine(int toX, int toY)
      {
          myGraph.DrawLine(myPen, xPos, yPos, toX, toY);
-         xPos = toX; // current x position is updated as moved
-         yPos = toY; // current y position is updated as moved
+         xPos = toX; // current x position is updated to where the lined is drawn to
+         yPos = toY; // current y position is updated to where the lined is drawn to
+     }
+
+     public void DrawRectangle(int width, int height)
+     {
+         myGraph.DrawRectangle(myPen, xPos, yPos, xPos + width, yPos + height);
      }
 
 
-     // the position of the pen when drawing
-     private int xPos, yPos;
+     
     }
 }

@@ -34,8 +34,8 @@
             this.inputLabel = new System.Windows.Forms.Label();
             this.outputLabel = new System.Windows.Forms.Label();
             this.commandLineLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
+            this.drawBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize) (this.drawBox)).BeginInit();
             this.SuspendLayout();
             // 
             // programmeArea
@@ -91,13 +91,13 @@
             this.commandLineLabel.Text = "Command Line";
             this.commandLineLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // drawBox
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(482, 68);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(436, 350);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.drawBox.Location = new System.Drawing.Point(482, 68);
+            this.drawBox.Name = "drawBox";
+            this.drawBox.Size = new System.Drawing.Size(436, 350);
+            this.drawBox.TabIndex = 7;
+            this.drawBox.TabStop = false;
             // 
             // Form1
             // 
@@ -105,7 +105,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(947, 652);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.drawBox);
             this.Controls.Add(this.commandLineLabel);
             this.Controls.Add(this.outputLabel);
             this.Controls.Add(this.inputLabel);
@@ -113,11 +113,11 @@
             this.Controls.Add(this.programmeArea);
             this.Name = "Form1";
             this.Text = "Programming Learning Environment";
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.drawBox)).EndInit();
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox drawBox;
 
         private System.Windows.Forms.RichTextBox commandLine;
         private System.Windows.Forms.Label commandLineLabel;
