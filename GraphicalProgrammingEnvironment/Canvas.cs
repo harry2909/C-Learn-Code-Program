@@ -44,5 +44,11 @@ namespace GraphicalProgrammingEnvironment
         {
             myGraph.DrawRectangle(myPen, xPos, yPos, xPos + width, yPos + width);
         }
+
+        public void DrawRectangle(int width, int height)
+        {
+            myGraph.DrawRectangle(myPen, xPos, yPos, xPos + width, yPos + height);
+        }
+        
     }
 }

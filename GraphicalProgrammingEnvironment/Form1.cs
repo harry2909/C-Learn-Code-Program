@@ -34,13 +34,14 @@ namespace GraphicalProgrammingEnvironment
         {
             if (e.KeyCode == Keys.Enter)
             {
+                // array to split
                 string[] delimiterChars = { 
                     "line",
                     "square",
                     "rectangle",
                     "circle"
                 };
-                // splitting text on space
+                
                 String command = commandLine.Text.Trim().ToLower();
                 String[] commandList = command.Split(delimiterChars.ToString(), StringSplitOptions.None);
 
@@ -56,7 +57,7 @@ namespace GraphicalProgrammingEnvironment
                     }
                     else if (commandList[i].Equals("rectangle"))
                     {
-                        DrawSquare();
+                        DrawRectangle();
                     }
                     else if (commandList[i].Equals("circle"))
                     {
@@ -90,6 +91,12 @@ namespace GraphicalProgrammingEnvironment
         {
             MyCanvas.DrawSquare(25);
             Console.WriteLine("Square has been drawn");
+        }
+        
+        private void DrawRectangle()
+        {
+            MyCanvas.DrawRectangle(60, 25);
+            Console.WriteLine("Rectangle has been drawn");
         }
     }
 }
