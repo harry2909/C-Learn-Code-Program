@@ -44,7 +44,12 @@ namespace GraphicalProgrammingEnvironment
                     MyCanvas.DrawLine(160, 120);
                     Console.WriteLine("Line has been drawn");
                 }
-
+                
+                else if (command.Equals("rectangle") == true)
+                {
+                    MyCanvas.DrawSquare( 25);
+                    Console.WriteLine("Rectangle has been drawn");
+                }
                 commandLine.Text = "";
                 Refresh();
             }

@@ -40,9 +40,9 @@ namespace GraphicalProgrammingEnvironment
             yPos = toY; // current y position is updated to where the lined is drawn to
         }
 
-        public void DrawRectangle(int width, int height)
+        public void DrawSquare(int width)
         {
-            myGraph.DrawRectangle(myPen, xPos, yPos, xPos + width, yPos + height);
+            myGraph.DrawRectangle(myPen, xPos, yPos, xPos + width, yPos + width);
         }
     }
 }
