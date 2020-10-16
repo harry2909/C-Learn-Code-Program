@@ -31,25 +31,35 @@ namespace GraphicalProgrammingEnvironment
         private void commandLine_KeyDown(object sender, KeyEventArgs e)
         {
             {
-                if (e.KeyCode != Keys.Enter) return;
-                // splitting text on space
-                String command = commandLine.Text.Trim().ToLower();
-
-                // output array in loop
-                for (int i = 0; i < command.Length; i++)
+                if (e.KeyCode != Keys.Enter)
                 {
-                    if (commandLine.Equals("line"))
+                    // splitting text on space
+                    String command = commandLine.Text.Trim().ToLower();
+
+                    // output array in loop
+                    Console.Write(command);
+                    if (command == ("line"))
                     {
                         MyCanvas.DrawLine(160, 120);
+                        Console.WriteLine("Line has been drawn");
                     }
+
+                    
+                    Refresh();
                 }
+
             }
         }
 
-
-        private void drawBox_Paint(object sender, PaintEventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        /// Create method to draw to bitmap on picture vent
+        /// </summary>
+        /// <param name="sender">Object to trigger event</param>
+        /// <param name="e">Event data</param>
+       private void drawBox_Paint(object sender, PaintEventArgs e)
+       {
+           Graphics myGraph = e.Graphics; // get graphics context of form
+           myGraph.DrawImageUnscaled(OutputBitMap, 0, 0); // put off screen bitmap on form
+       }
     }
 }

@@ -55,7 +55,7 @@
             this.commandLine.Name = "commandLine";
             this.commandLine.Size = new System.Drawing.Size(891, 138);
             this.commandLine.TabIndex = 3;
-            this.commandLine.Text = "Type in your commands here. End all commands with a $.";
+            this.commandLine.Text = "";
             this.commandLine.KeyDown += new System.Windows.Forms.KeyEventHandler(this.commandLine_KeyDown);
             // 
             // inputLabel
