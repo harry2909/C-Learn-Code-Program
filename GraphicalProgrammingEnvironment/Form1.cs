@@ -19,6 +19,8 @@ namespace GraphicalProgrammingEnvironment
 
         Canvas MyCanvas;
 
+        private String[] commandList;
+
         public Form1()
         {
             InitializeComponent();
@@ -50,11 +52,50 @@ namespace GraphicalProgrammingEnvironment
         }
 
         /// <summary>
+        /// Method to process all possible commands
+        /// </summary>
+        private void ProcessCommands()
+        {
+            // split after trim and store in array
+            String command = commandLine.Text.Trim().ToLower();
+            commandList = command.Split(" ");
+
+            // loop through array of commands
+            
+                if (commandList[0].Equals("line")) // if match, call method
+                {
+                    DrawLine();
+                }
+                else if (commandList[0].Equals("square"))
+                {
+                    DrawSquare();
+                }
+                else if (commandList[0].Equals("rectangle"))
+                {
+                    DrawRectangle();
+                }
+                else if (commandList[0].Equals("circle"))
+                {
+                    DrawSquare();
+                }
+                
+            commandLine.Text = "";
+            Refresh();
+        }
+        
+        /// <summary>
         /// Method to draw a line
         /// </summary>
         private void DrawLine()
         {
-            MyCanvas.DrawLine(160, 120);
+            try
+            {
+                MyCanvas.DrawLine(Int32.Parse(commandList[1]), Int32.Parse(commandList[2]));
+            } catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show("Must enter a number after command.");
+            }
+
             commandLine.Text = ("Line has been drawn");
         }
 
@@ -73,50 +114,9 @@ namespace GraphicalProgrammingEnvironment
         private void DrawRectangle()
         {
             MyCanvas.DrawRectangle(60, 25);
-             commandLine.Text = ("Rectangle has been drawn");
+            commandLine.Text = ("Rectangle has been drawn");
         }
-
-        /// <summary>
-        /// Method to process all possible commands
-        /// </summary>
-        private void ProcessCommands()
-        {
-            // array to for possible splits on command names
-            string[] delimiterChars = { 
-                "line",
-                "square",
-                "rectangle",
-                "circle"
-            };
-                
-            // split after trim and store in array
-            String command = commandLine.Text.Trim().ToLower();
-            String[] commandList = command.Split(delimiterChars.ToString(), StringSplitOptions.None);
-
-            // loop through array of commands
-            for (int i = 0; i < commandList.Length; i++)
-            {
-                if (commandList[i].Equals("line")) // if match, call method
-                {
-                    DrawLine();
-                }
-                else if (commandList[i].Equals("square"))
-                {
-                    DrawSquare();
-                }
-                else if (commandList[i].Equals("rectangle"))
-                {
-                    DrawRectangle();
-                }
-                else if (commandList[i].Equals("circle"))
-                {
-                    DrawSquare();
-                }
-               
-            }
-
-            commandLine.Text = "";
-            Refresh();
-        }
+        
+        
     }
 }
