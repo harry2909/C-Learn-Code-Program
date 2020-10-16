@@ -60,29 +60,38 @@ namespace GraphicalProgrammingEnvironment
             String command = commandLine.Text.Trim().ToLower();
             commandList = command.Split(" ");
 
-            // loop through array of commands
-            
-                if (commandList[0].Equals("line")) // if match, call method
-                {
-                    DrawLine();
-                }
-                else if (commandList[0].Equals("square"))
-                {
-                    DrawSquare();
-                }
-                else if (commandList[0].Equals("rectangle"))
-                {
-                    DrawRectangle();
-                }
-                else if (commandList[0].Equals("circle"))
-                {
-                    DrawSquare();
-                }
-                
+
+            if (commandList[0].Equals("line")) // if match, call method
+            {
+                DrawLine();
+            }
+            else if (commandList[0].Equals("square"))
+            {
+                DrawSquare();
+            }
+            else if (commandList[0].Equals("rectangle"))
+            {
+                DrawRectangle();
+            }
+            else if (commandList[0].Equals("circle"))
+            {
+                DrawSquare();
+            }
+            else if (commandList[0].Equals("reset"))
+            {
+                ClearImage();
+                drawBox.Refresh();
+            }
+            else if (commandList[0].Equals("quit"))
+            {
+                Application.Exit();
+            }
+
+
             commandLine.Text = "";
             Refresh();
         }
-        
+
         /// <summary>
         /// Method to draw a line
         /// </summary>
@@ -90,8 +99,10 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-                MyCanvas.DrawLine(Int32.Parse(commandList[1]), Int32.Parse(commandList[2]));
-            } catch (IndexOutOfRangeException)
+                MyCanvas.DrawLine(Int32.Parse(commandList[1]),
+                    Int32.Parse(commandList[2])); // use the index to determine values for shape
+            }
+            catch (IndexOutOfRangeException)
             {
                 MessageBox.Show("Must enter a number after command.");
             }
@@ -104,19 +115,41 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         private void DrawSquare()
         {
-            MyCanvas.DrawSquare(50);
-            commandLine.Text = ("Square has been drawn");
+            try
+            {
+                MyCanvas.DrawSquare(Int32.Parse(commandList[1]));
+                commandLine.Text = ("Square has been drawn");
+            }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show("Must enter a number after command.");
+            }
         }
-        
+
         /// <summary>
         /// Method to draw a rectangle
         /// </summary>
         private void DrawRectangle()
         {
-            MyCanvas.DrawRectangle(60, 25);
-            commandLine.Text = ("Rectangle has been drawn");
+            try
+            {
+                MyCanvas.DrawRectangle(Int32.Parse(commandList[1]),
+                    Int32.Parse(commandList[2]));
+                commandLine.Text = ("Rectangle has been drawn");
+            }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show("Must enter a number after command.");
+            }
         }
         
-        
+        /// <summary>
+        /// Method to reset the bit map on command
+        /// </summary>
+        public void ClearImage()
+        {
+            Graphics myGraphics = Graphics.FromImage(OutputBitMap);
+            myGraphics.Clear(Color.Teal);
+        }
     }
 }
