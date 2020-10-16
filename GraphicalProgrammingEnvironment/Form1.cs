@@ -23,10 +23,17 @@ namespace GraphicalProgrammingEnvironment
         private void commandLine_KeyDown(object sender, KeyEventArgs e)
         {
             {
-                Console.WriteLine("Hello");
                 if (e.KeyCode == Keys.Enter)
                 {
-                    Console.WriteLine("You have pressed enter");
+                    // splitting text on space
+                    String[] splitText = commandLine.Text.Split(" ");
+
+                    // output array in loop
+                    for (int i = 0; i < splitText.Length; i++)
+                    {
+                        Console.WriteLine(splitText[i]);
+                    }
+                    
                 }
             }
         }
