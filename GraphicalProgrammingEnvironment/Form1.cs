@@ -34,22 +34,36 @@ namespace GraphicalProgrammingEnvironment
         {
             if (e.KeyCode == Keys.Enter)
             {
+                string[] delimiterChars = { 
+                    "line",
+                    "square",
+                    "rectangle",
+                    "circle"
+                };
                 // splitting text on space
                 String command = commandLine.Text.Trim().ToLower();
+                String[] commandList = command.Split(delimiterChars.ToString(), StringSplitOptions.None);
 
-                // output array in loop
-                Console.Write(command);
-                if (command.Equals("line") == true)
+                for (int i = 0; i < commandList.Length; i++)
                 {
-                    MyCanvas.DrawLine(160, 120);
-                    Console.WriteLine("Line has been drawn");
+                    if (commandList[i].Equals("line"))
+                    {
+                        DrawLine();
+                    }
+                    else if (commandList[i].Equals("square"))
+                    {
+                        DrawSquare();
+                    }
+                    else if (commandList[i].Equals("rectangle"))
+                    {
+                        DrawSquare();
+                    }
+                    else if (commandList[i].Equals("circle"))
+                    {
+                        DrawSquare();
+                    }
                 }
-                
-                else if (command.Equals("rectangle") == true)
-                {
-                    MyCanvas.DrawSquare( 25);
-                    Console.WriteLine("Rectangle has been drawn");
-                }
+
                 commandLine.Text = "";
                 Refresh();
             }
@@ -64,6 +78,18 @@ namespace GraphicalProgrammingEnvironment
         {
             Graphics myGraph = e.Graphics; // get graphics context of form
             myGraph.DrawImageUnscaled(OutputBitMap, 0, 0); // put off screen bitmap on form
+        }
+
+        private void DrawLine()
+        {
+            MyCanvas.DrawLine(160, 120);
+            Console.WriteLine("Line has been drawn");
+        }
+
+        private void DrawSquare()
+        {
+            MyCanvas.DrawSquare(25);
+            Console.WriteLine("Square has been drawn");
         }
     }
 }
