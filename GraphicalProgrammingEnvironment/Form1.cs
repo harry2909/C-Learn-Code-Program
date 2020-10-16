@@ -17,10 +17,17 @@ namespace GraphicalProgrammingEnvironment
             InitializeComponent();
         }
 
+        /**
+         * Creating method to handle enter key event
+         */
         private void commandLine_KeyDown(object sender, KeyEventArgs e)
         {
             {
-                Console.Write("Hello");
+                Console.WriteLine("Hello");
+                if (e.KeyCode == Keys.Enter)
+                {
+                    Console.WriteLine("You have pressed enter");
+                }
             }
         }
     }
