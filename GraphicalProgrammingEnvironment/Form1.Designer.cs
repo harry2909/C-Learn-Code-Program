@@ -29,100 +29,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.outputArea = new System.Windows.Forms.RichTextBox();
+            this.programmeArea = new System.Windows.Forms.RichTextBox();
+            this.commandLine = new System.Windows.Forms.RichTextBox();
+            this.inputLabel = new System.Windows.Forms.Label();
+            this.outputLabel = new System.Windows.Forms.Label();
+            this.commandLineLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // outputArea
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(482, 68);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(436, 350);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.outputArea.Location = new System.Drawing.Point(482, 68);
+            this.outputArea.Name = "outputArea";
+            this.outputArea.Size = new System.Drawing.Size(436, 350);
+            this.outputArea.TabIndex = 1;
+            this.outputArea.Text = "";
             // 
-            // richTextBox2
+            // programmeArea
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(27, 68);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(436, 350);
-            this.richTextBox2.TabIndex = 2;
-            this.richTextBox2.Text = "";
+            this.programmeArea.Location = new System.Drawing.Point(27, 68);
+            this.programmeArea.Name = "programmeArea";
+            this.programmeArea.Size = new System.Drawing.Size(436, 350);
+            this.programmeArea.TabIndex = 2;
+            this.programmeArea.Text = "";
             // 
-            // richTextBox3
+            // commandLine
             // 
-            this.richTextBox3.BackColor = System.Drawing.SystemColors.WindowText;
-            this.richTextBox3.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.richTextBox3.Location = new System.Drawing.Point(27, 476);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(891, 138);
-            this.richTextBox3.TabIndex = 3;
-            this.richTextBox3.Text = "";
-            this.richTextBox3.TextChanged += new System.EventHandler(this.richTextBox3_TextChanged);
+            this.commandLine.BackColor = System.Drawing.SystemColors.WindowText;
+            this.commandLine.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.commandLine.Location = new System.Drawing.Point(27, 476);
+            this.commandLine.Name = "commandLine";
+            this.commandLine.Size = new System.Drawing.Size(891, 138);
+            this.commandLine.TabIndex = 3;
+            this.commandLine.Text = "";
+            this.commandLine.TextChanged += new System.EventHandler(this.richTextBox3_TextChanged);
             // 
-            // label1
+            // inputLabel
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(192, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 46);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Input";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.inputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.inputLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.inputLabel.Location = new System.Drawing.Point(192, 9);
+            this.inputLabel.Name = "inputLabel";
+            this.inputLabel.Size = new System.Drawing.Size(100, 46);
+            this.inputLabel.TabIndex = 4;
+            this.inputLabel.Text = "Input";
+            this.inputLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // outputLabel
             // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(667, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 46);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Output";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.outputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.outputLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.outputLabel.Location = new System.Drawing.Point(667, 9);
+            this.outputLabel.Name = "outputLabel";
+            this.outputLabel.Size = new System.Drawing.Size(100, 46);
+            this.outputLabel.TabIndex = 5;
+            this.outputLabel.Text = "Output";
+            this.outputLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.outputLabel.Click += new System.EventHandler(this.label2_Click);
             // 
-            // label3
+            // commandLineLabel
             // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(345, 427);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(252, 46);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Command Line";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.commandLineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.commandLineLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.commandLineLabel.Location = new System.Drawing.Point(345, 427);
+            this.commandLineLabel.Name = "commandLineLabel";
+            this.commandLineLabel.Size = new System.Drawing.Size(252, 46);
+            this.commandLineLabel.TabIndex = 6;
+            this.commandLineLabel.Text = "Command Line";
+            this.commandLineLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Form1
+            // learningEnvironment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(947, 652);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.richTextBox3);
-            this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.richTextBox1);
-            this.Name = "Form1";
+            this.Controls.Add(this.commandLineLabel);
+            this.Controls.Add(this.outputLabel);
+            this.Controls.Add(this.inputLabel);
+            this.Controls.Add(this.commandLine);
+            this.Controls.Add(this.programmeArea);
+            this.Controls.Add(this.outputArea);
+            this.Name = "learningEnvironment";
             this.Text = "Form1";
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Label label3;
-
-        private System.Windows.Forms.Label label2;
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.RichTextBox commandLine;
+        private System.Windows.Forms.Label commandLineLabel;
+        private System.Windows.Forms.Label inputLabel;
+        private System.Windows.Forms.RichTextBox outputArea;
+        private System.Windows.Forms.Label outputLabel;
+        private System.Windows.Forms.RichTextBox programmeArea;
 
         #endregion
     }
