@@ -17,14 +17,11 @@ namespace GraphicalProgrammingEnvironment
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void commandLine_KeyDown(object sender, KeyEventArgs e)
         {
-            throw new System.NotImplementedException();
-        }
-
-        private void richTextBox3_TextChanged(object sender, EventArgs e)
-        {
-            throw new System.NotImplementedException();
+            {
+                Console.Write("Hello");
+            }
         }
     }
 }

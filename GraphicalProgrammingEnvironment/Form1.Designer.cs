@@ -62,7 +62,7 @@
             this.commandLine.Size = new System.Drawing.Size(891, 138);
             this.commandLine.TabIndex = 3;
             this.commandLine.Text = "";
-            this.commandLine.TextChanged += new System.EventHandler(this.richTextBox3_TextChanged);
+            this.commandLine.KeyDown += new System.Windows.Forms.KeyEventHandler(this.commandLine_KeyDown);
             // 
             // inputLabel
             // 
@@ -85,7 +85,6 @@
             this.outputLabel.TabIndex = 5;
             this.outputLabel.Text = "Output";
             this.outputLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.outputLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // commandLineLabel
             // 
@@ -98,7 +97,7 @@
             this.commandLineLabel.Text = "Command Line";
             this.commandLineLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // learningEnvironment
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -110,8 +109,8 @@
             this.Controls.Add(this.commandLine);
             this.Controls.Add(this.programmeArea);
             this.Controls.Add(this.outputArea);
-            this.Name = "learningEnvironment";
-            this.Text = "Form1";
+            this.Name = "Form1";
+            this.Text = "Programming Learning Environment";
             this.ResumeLayout(false);
         }
 
