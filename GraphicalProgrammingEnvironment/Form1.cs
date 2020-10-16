@@ -26,7 +26,7 @@ namespace GraphicalProgrammingEnvironment
                 if (e.KeyCode == Keys.Enter)
                 {
                     // splitting text on space
-                    String[] splitText = commandLine.Text.Split(" ");
+                    String[] splitText = commandLine.Text.Split("$");
 
                     // output array in loop
                     for (int i = 0; i < splitText.Length; i++)

@@ -29,21 +29,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.outputArea = new System.Windows.Forms.RichTextBox();
             this.programmeArea = new System.Windows.Forms.RichTextBox();
             this.commandLine = new System.Windows.Forms.RichTextBox();
             this.inputLabel = new System.Windows.Forms.Label();
             this.outputLabel = new System.Windows.Forms.Label();
             this.commandLineLabel = new System.Windows.Forms.Label();
+            this.drawPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
-            // 
-            // outputArea
-            // 
-            this.outputArea.Location = new System.Drawing.Point(482, 68);
-            this.outputArea.Name = "outputArea";
-            this.outputArea.Size = new System.Drawing.Size(436, 350);
-            this.outputArea.TabIndex = 1;
-            this.outputArea.Text = "";
             // 
             // programmeArea
             // 
@@ -97,27 +89,35 @@
             this.commandLineLabel.Text = "Command Line";
             this.commandLineLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // drawPanel
+            // 
+            this.drawPanel.Location = new System.Drawing.Point(483, 69);
+            this.drawPanel.Name = "drawPanel";
+            this.drawPanel.Size = new System.Drawing.Size(434, 348);
+            this.drawPanel.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(947, 652);
+            this.Controls.Add(this.drawPanel);
             this.Controls.Add(this.commandLineLabel);
             this.Controls.Add(this.outputLabel);
             this.Controls.Add(this.inputLabel);
             this.Controls.Add(this.commandLine);
             this.Controls.Add(this.programmeArea);
-            this.Controls.Add(this.outputArea);
             this.Name = "Form1";
             this.Text = "Programming Learning Environment";
             this.ResumeLayout(false);
         }
 
+        private System.Windows.Forms.Panel drawPanel;
+
         private System.Windows.Forms.RichTextBox commandLine;
         private System.Windows.Forms.Label commandLineLabel;
         private System.Windows.Forms.Label inputLabel;
-        private System.Windows.Forms.RichTextBox outputArea;
         private System.Windows.Forms.Label outputLabel;
         private System.Windows.Forms.RichTextBox programmeArea;
 
