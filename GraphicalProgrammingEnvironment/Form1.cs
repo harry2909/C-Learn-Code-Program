@@ -30,25 +30,21 @@ namespace GraphicalProgrammingEnvironment
        /// <param name="e">Event data</param>
         private void commandLine_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
             {
-                if (e.KeyCode != Keys.Enter)
-                {
+                
                     // splitting text on space
                     String command = commandLine.Text.Trim().ToLower();
 
                     // output array in loop
                     Console.Write(command);
-                    if (command == ("line"))
+                    if (command.Equals("line")==true)
                     {
                         MyCanvas.DrawLine(160, 120);
                         Console.WriteLine("Line has been drawn");
                     }
-
                     
-                    Refresh();
                 }
-
-            }
         }
 
         /// <summary>
