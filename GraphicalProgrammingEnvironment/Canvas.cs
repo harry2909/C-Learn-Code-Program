@@ -8,31 +8,34 @@ namespace GraphicalProgrammingEnvironment
     /// </summary>
     class Canvas
     {
-     // create variable for pen, position and graphics
+     // instance data for pen, position and graphics
      // the graphics context is the area of the form to draw on
-     private Graphics graph;
-     private Pen myPen;
+     Graphics myGraph;
+     Pen myPen;
 
      /// <summary>
-     /// Creating getter and setter for pen
+     /// Constructor initialises canvas.
      /// </summary>
-     public Pen MyPen
+     /// <param name="myGraph">Graphics context</param>
+     public Canvas(Graphics myGraph)
      {
-         set => myPen = new Pen(Color.FromArgb(239, 236, 245));
-         get => myPen;
-         
+         this.myGraph = myGraph; // this is referring to instance data
+         xPos = yPos = 0;
+         myPen = new Pen(Color.White, 1); // create a standard pen
      }
 
      /// <summary>
-     /// Constructor initialises canvas
+     /// Create a method to draw a line from current pen position
      /// </summary>
-     /// <param name="graph">Graphics context of place to draw</param>
-     public Canvas(Graphics graph)
+     /// <param name="toX">x position to draw to</param>
+     /// <param name="toY">y position to draw to</param>
+     public void DrawLine(int toX, int toY)
      {
-         this.graph = graph;
+         myGraph.DrawLine(myPen, xPos, yPos, toX, toY);
+         xPos = toX; // current x position is updated as moved
+         yPos = toY; // current y position is updated as moved
      }
-     
-     
+
 
      // the position of the pen when drawing
      private int xPos, yPos;
