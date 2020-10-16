@@ -34,7 +34,8 @@
             this.inputLabel = new System.Windows.Forms.Label();
             this.outputLabel = new System.Windows.Forms.Label();
             this.commandLineLabel = new System.Windows.Forms.Label();
-            this.drawPanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // programmeArea
@@ -48,12 +49,13 @@
             // commandLine
             // 
             this.commandLine.BackColor = System.Drawing.SystemColors.WindowText;
+            this.commandLine.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.commandLine.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.commandLine.Location = new System.Drawing.Point(27, 476);
             this.commandLine.Name = "commandLine";
             this.commandLine.Size = new System.Drawing.Size(891, 138);
             this.commandLine.TabIndex = 3;
-            this.commandLine.Text = "";
+            this.commandLine.Text = "Type in your commands here. End all commands with a $.";
             this.commandLine.KeyDown += new System.Windows.Forms.KeyEventHandler(this.commandLine_KeyDown);
             // 
             // inputLabel
@@ -89,12 +91,13 @@
             this.commandLineLabel.Text = "Command Line";
             this.commandLineLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // drawPanel
+            // pictureBox1
             // 
-            this.drawPanel.Location = new System.Drawing.Point(483, 69);
-            this.drawPanel.Name = "drawPanel";
-            this.drawPanel.Size = new System.Drawing.Size(434, 348);
-            this.drawPanel.TabIndex = 7;
+            this.pictureBox1.Location = new System.Drawing.Point(482, 68);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(436, 350);
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -102,7 +105,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(947, 652);
-            this.Controls.Add(this.drawPanel);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.commandLineLabel);
             this.Controls.Add(this.outputLabel);
             this.Controls.Add(this.inputLabel);
@@ -110,10 +113,11 @@
             this.Controls.Add(this.programmeArea);
             this.Name = "Form1";
             this.Text = "Programming Learning Environment";
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Panel drawPanel;
+        private System.Windows.Forms.PictureBox pictureBox1;
 
         private System.Windows.Forms.RichTextBox commandLine;
         private System.Windows.Forms.Label commandLineLabel;
