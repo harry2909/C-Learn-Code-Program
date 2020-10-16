@@ -15,7 +15,7 @@ namespace GraphicalProgrammingEnvironment
         /// <summary>
         /// Bitmap to draw on which will be displayed in drawBox
         /// </summary>
-        Bitmap OutputBitMap = new Bitmap(640, 480);
+        Bitmap OutputBitMap = new Bitmap(840, 680);
 
         Canvas MyCanvas;
 
@@ -34,39 +34,7 @@ namespace GraphicalProgrammingEnvironment
         {
             if (e.KeyCode == Keys.Enter)
             {
-                // array to split
-                string[] delimiterChars = { 
-                    "line",
-                    "square",
-                    "rectangle",
-                    "circle"
-                };
-                
-                String command = commandLine.Text.Trim().ToLower();
-                String[] commandList = command.Split(delimiterChars.ToString(), StringSplitOptions.None);
-
-                for (int i = 0; i < commandList.Length; i++)
-                {
-                    if (commandList[i].Equals("line"))
-                    {
-                        DrawLine();
-                    }
-                    else if (commandList[i].Equals("square"))
-                    {
-                        DrawSquare();
-                    }
-                    else if (commandList[i].Equals("rectangle"))
-                    {
-                        DrawRectangle();
-                    }
-                    else if (commandList[i].Equals("circle"))
-                    {
-                        DrawSquare();
-                    }
-                }
-
-                commandLine.Text = "";
-                Refresh();
+                ProcessCommands();
             }
         }
 
@@ -81,22 +49,74 @@ namespace GraphicalProgrammingEnvironment
             myGraph.DrawImageUnscaled(OutputBitMap, 0, 0); // put off screen bitmap on form
         }
 
+        /// <summary>
+        /// Method to draw a line
+        /// </summary>
         private void DrawLine()
         {
             MyCanvas.DrawLine(160, 120);
-            Console.WriteLine("Line has been drawn");
+            commandLine.Text = ("Line has been drawn");
         }
 
+        /// <summary>
+        /// Method to draw a square
+        /// </summary>
         private void DrawSquare()
         {
-            MyCanvas.DrawSquare(25);
-            Console.WriteLine("Square has been drawn");
+            MyCanvas.DrawSquare(50);
+            commandLine.Text = ("Square has been drawn");
         }
         
+        /// <summary>
+        /// Method to draw a rectangle
+        /// </summary>
         private void DrawRectangle()
         {
             MyCanvas.DrawRectangle(60, 25);
-            Console.WriteLine("Rectangle has been drawn");
+             commandLine.Text = ("Rectangle has been drawn");
+        }
+
+        /// <summary>
+        /// Method to process all possible commands
+        /// </summary>
+        private void ProcessCommands()
+        {
+            // array to for possible splits on command names
+            string[] delimiterChars = { 
+                "line",
+                "square",
+                "rectangle",
+                "circle"
+            };
+                
+            // split after trim and store in array
+            String command = commandLine.Text.Trim().ToLower();
+            String[] commandList = command.Split(delimiterChars.ToString(), StringSplitOptions.None);
+
+            // loop through array of commands
+            for (int i = 0; i < commandList.Length; i++)
+            {
+                if (commandList[i].Equals("line")) // if match, call method
+                {
+                    DrawLine();
+                }
+                else if (commandList[i].Equals("square"))
+                {
+                    DrawSquare();
+                }
+                else if (commandList[i].Equals("rectangle"))
+                {
+                    DrawRectangle();
+                }
+                else if (commandList[i].Equals("circle"))
+                {
+                    DrawSquare();
+                }
+               
+            }
+
+            commandLine.Text = "";
+            Refresh();
         }
     }
 }
