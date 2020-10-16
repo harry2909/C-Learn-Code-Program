@@ -98,6 +98,7 @@
             this.drawBox.Size = new System.Drawing.Size(436, 350);
             this.drawBox.TabIndex = 7;
             this.drawBox.TabStop = false;
+            this.drawBox.Paint += new System.Windows.Forms.PaintEventHandler(this.drawBox_Paint);
             // 
             // Form1
             // 
