@@ -63,7 +63,6 @@ namespace GraphicalProgrammingEnvironment
         {
             xPos = toX;
             yPos = toY;
-            
         }
         
     }

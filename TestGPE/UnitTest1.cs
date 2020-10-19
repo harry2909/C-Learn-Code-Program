@@ -81,6 +81,35 @@ namespace TestGPE
             
 
         }
+        
+        /// <summary>
+        /// Testing if exception throws is no number is entered after command
+        /// </summary>
+        [TestMethod]
+        public void ExceptionTest()
+        {
+            String[] commandList;
+            String list = "line";
+            String command = list.Trim().ToLower(); 
+            commandList = command.Split(" ");
+
+            try
+            {
+                if (commandList[0].Contains("line"))
+                {
+                    _canvas.DrawLine(Int32.Parse(commandList[1]), Int32.Parse(commandList[2]));
+                }
+            }
+            catch (IndexOutOfRangeException)
+            {
+                Console.Write("This should throw");
+            }
+            
+            
+
+        }
+        
+        
 
        
         

@@ -38,6 +38,7 @@ namespace GraphicalProgrammingEnvironment
             {
                 ProcessCommands();
             }
+           
         }
 
         /// <summary>
@@ -64,7 +65,8 @@ namespace GraphicalProgrammingEnvironment
             {
                 MoveTo();
             }
-            if (commandList[0].Equals("line")) // if match, call method
+
+            else if (commandList[0].Equals("line")) // if match, call method
             {
                 DrawLine();
             }
@@ -90,7 +92,6 @@ namespace GraphicalProgrammingEnvironment
                 Application.Exit();
             }
 
-
             commandLine.Text = "";
             Refresh();
         }
@@ -102,8 +103,8 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-           MyCanvas.MoveTo(Int32.Parse(commandList[1]),
-               Int32.Parse(commandList[2])); 
+                MyCanvas.MoveTo(Int32.Parse(commandList[1]),
+                    Int32.Parse(commandList[2]));
             }
             catch (IndexOutOfRangeException)
             {
@@ -123,8 +124,6 @@ namespace GraphicalProgrammingEnvironment
             {
                 MessageBox.Show("Must enter a number after command.");
             }
-
-            
         }
 
         /// <summary>
@@ -174,7 +173,6 @@ namespace GraphicalProgrammingEnvironment
         }
 
 
-
         /// <summary>
         /// Method to reset the bit map on command
         /// </summary>
@@ -183,7 +181,5 @@ namespace GraphicalProgrammingEnvironment
             Graphics myGraphics = Graphics.FromImage(OutputBitMap);
             myGraphics.Clear(Color.Teal);
         }
-        
-        
     }
 }
