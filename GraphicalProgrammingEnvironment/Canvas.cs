@@ -27,6 +27,10 @@ namespace GraphicalProgrammingEnvironment
             xPos = yPos = 0;
             myPen = new Pen(Color.White, 1); // create a standard pen
         }
+        
+        public Canvas()
+        {
+        }
 
         /// <summary>
         /// Create a method to draw a line from current pen position
@@ -48,6 +52,18 @@ namespace GraphicalProgrammingEnvironment
         public void DrawRectangle(int width, int height)
         {
             myGraph.DrawRectangle(myPen, xPos, yPos, xPos + width, yPos + height);
+        }
+
+        public void DrawCircle(float radius)
+        {
+            myGraph.DrawEllipse(myPen, xPos , yPos, radius + radius, radius + radius);
+        }
+
+        public void MoveTo(int toX, int toY)
+        {
+            xPos = toX;
+            yPos = toY;
+            
         }
         
     }

@@ -60,7 +60,10 @@ namespace GraphicalProgrammingEnvironment
             String command = commandLine.Text.Trim().ToLower();
             commandList = command.Split(" ");
 
-
+            if (commandList[0].Equals("moveto")) // if match, call method
+            {
+                MoveTo();
+            }
             if (commandList[0].Equals("line")) // if match, call method
             {
                 DrawLine();
@@ -75,9 +78,9 @@ namespace GraphicalProgrammingEnvironment
             }
             else if (commandList[0].Equals("circle"))
             {
-                DrawSquare();
+                DrawCircle();
             }
-            else if (commandList[0].Equals("reset"))
+            else if (commandList[0].Equals("clear"))
             {
                 ClearImage();
                 drawBox.Refresh();
@@ -93,21 +96,35 @@ namespace GraphicalProgrammingEnvironment
         }
 
         /// <summary>
-        /// Method to draw a line
+        /// Methods to draw
         /// </summary>
+        private void MoveTo()
+        {
+            try
+            {
+           MyCanvas.MoveTo(Int32.Parse(commandList[1]),
+               Int32.Parse(commandList[2])); 
+            }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show("Must enter a number after command.");
+            }
+        }
+
         private void DrawLine()
         {
             try
             {
                 MyCanvas.DrawLine(Int32.Parse(commandList[1]),
                     Int32.Parse(commandList[2])); // use the index to determine values for shape
+                commandLine.Text = ("Line has been drawn");
             }
             catch (IndexOutOfRangeException)
             {
                 MessageBox.Show("Must enter a number after command.");
             }
 
-            commandLine.Text = ("Line has been drawn");
+            
         }
 
         /// <summary>
@@ -142,7 +159,22 @@ namespace GraphicalProgrammingEnvironment
                 MessageBox.Show("Must enter a number after command.");
             }
         }
-        
+
+        private void DrawCircle()
+        {
+            try
+            {
+                MyCanvas.DrawCircle(Int32.Parse(commandList[1]));
+                commandLine.Text = "Circle has been drawn.";
+            }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show("Must enter a number after command.");
+            }
+        }
+
+
+
         /// <summary>
         /// Method to reset the bit map on command
         /// </summary>
@@ -151,5 +183,7 @@ namespace GraphicalProgrammingEnvironment
             Graphics myGraphics = Graphics.FromImage(OutputBitMap);
             myGraphics.Clear(Color.Teal);
         }
+        
+        
     }
 }

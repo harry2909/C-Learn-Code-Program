@@ -11,7 +11,7 @@ namespace TestGPE
     
     public class UnitTest1
     {
-        private Canvas _canvas;
+        Canvas _canvas = new Canvas();
         
         Bitmap OutputBitMap = new Bitmap(840, 680);
         
@@ -35,14 +35,54 @@ namespace TestGPE
             Assert.IsTrue(Int32.Parse(commandList[2]).Equals(40));
             
         }
-
+        /// <summary>
+        /// Checking if the pen moves when xpos and ypos are changed.
+        /// </summary>
         [TestMethod]
-        public void TestCanvas()
+        public void TestPenCoordiantes()
         {
-            _canvas.DrawLine(1000, 1000);
-            _canvas.DrawRectangle(10, 20);
+            String[] commandList;
+            String list = "line 20 40";
+            String list2 = "line";
+            String command = list.Trim().ToLower(); 
+            commandList = command.Split(" ");
+            int xPos = 280;
+            int yPos = 280;
+            if (commandList[0].Equals("line"))
+            {
+                _canvas.MoveTo(xPos, yPos);
+                Assert.IsTrue(xPos > 0);
+                Assert.IsTrue(yPos > 0);
+            }
             
+
         }
+        
+        /// <summary>
+        /// Checking if the pen moves when xpos and ypos are changed.
+        /// </summary>
+        [TestMethod]
+        public void CommandLineCoordinates()
+        {
+            String[] commandList;
+            String list = "line 20 40";
+            String list2 = "line";
+            String command = list.Trim().ToLower(); 
+            commandList = command.Split(" ");
+            int toX = 0;
+            int toY = 0;
+            if (commandList[0].Equals("line"))
+                
+            {
+                _canvas.MoveTo(Int32.Parse(commandList[1]), Int32.Parse(commandList[2]));
+                Assert.IsTrue(Int32.Parse(commandList[1]) > toX);
+                Assert.IsTrue(Int32.Parse(commandList[2]) > toY);
+            }
+            
+
+        }
+
+       
         
         
     }
