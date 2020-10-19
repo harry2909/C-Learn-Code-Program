@@ -6,7 +6,7 @@ namespace GraphicalProgrammingEnvironment
     /// <summary>
     /// Canvas class holds the data from the form in response to simple commands.
     /// </summary>
-    class Canvas
+    public class Canvas
     {
         // instance data for pen, position and graphics
         // the graphics context is the area of the form to draw on
