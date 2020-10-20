@@ -115,7 +115,7 @@ namespace GraphicalProgrammingEnvironment
             }
             catch (IndexOutOfRangeException) // catch if no number has been entered after command
             {
-                MessageBox.Show(@"Must enter a number after command.");
+                MessageBox.Show(@"Must enter 2 numbers after command.");
             }
         }
 
@@ -129,7 +129,7 @@ namespace GraphicalProgrammingEnvironment
             }
             catch (IndexOutOfRangeException)
             {
-                MessageBox.Show(@"Must enter a number after command.");
+                MessageBox.Show(@"Must enter 2 numbers after command.");
             }
         }
 
@@ -156,7 +156,7 @@ namespace GraphicalProgrammingEnvironment
             }
             catch (IndexOutOfRangeException)
             {
-                MessageBox.Show(@"Must enter a number after command.");
+                MessageBox.Show(@"Must enter 2 numbers after command.");
             }
         }
 
@@ -192,7 +192,7 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         private void ClearImage()
         {
-            Graphics myGraphics = Graphics.FromImage(OutputBitMap);
+            var myGraphics = Graphics.FromImage(OutputBitMap);
             myGraphics.Clear(Color.Teal);
         }
 
