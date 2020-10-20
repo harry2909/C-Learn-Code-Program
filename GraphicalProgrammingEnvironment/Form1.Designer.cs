@@ -35,6 +35,8 @@
             this.outputLabel = new System.Windows.Forms.Label();
             this.commandLineLabel = new System.Windows.Forms.Label();
             this.drawBox = new System.Windows.Forms.PictureBox();
+            this.runButton = new System.Windows.Forms.Button();
+            this.fillButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize) (this.drawBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,12 +102,32 @@
             this.drawBox.TabStop = false;
             this.drawBox.Paint += new System.Windows.Forms.PaintEventHandler(this.drawBox_Paint);
             // 
+            // runButton
+            // 
+            this.runButton.Location = new System.Drawing.Point(27, 427);
+            this.runButton.Name = "runButton";
+            this.runButton.Size = new System.Drawing.Size(75, 32);
+            this.runButton.TabIndex = 8;
+            this.runButton.Text = "Run";
+            this.runButton.UseVisualStyleBackColor = true;
+            // 
+            // fillButton
+            // 
+            this.fillButton.Location = new System.Drawing.Point(136, 427);
+            this.fillButton.Name = "fillButton";
+            this.fillButton.Size = new System.Drawing.Size(75, 32);
+            this.fillButton.TabIndex = 9;
+            this.fillButton.Text = "Fill";
+            this.fillButton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(947, 652);
+            this.Controls.Add(this.fillButton);
+            this.Controls.Add(this.runButton);
             this.Controls.Add(this.drawBox);
             this.Controls.Add(this.commandLineLabel);
             this.Controls.Add(this.outputLabel);
@@ -117,6 +139,9 @@
             ((System.ComponentModel.ISupportInitialize) (this.drawBox)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button fillButton;
+        private System.Windows.Forms.Button runButton;
 
         private System.Windows.Forms.PictureBox drawBox;
 

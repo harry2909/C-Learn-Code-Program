@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GraphicalProgrammingEnvironment
@@ -25,7 +19,7 @@ namespace GraphicalProgrammingEnvironment
         /// <summary>
         /// Array to hold list of commands
         /// </summary>
-        private String[] commandList;
+        private String[] _commandList;
 
         public Form1()
         {
@@ -64,39 +58,43 @@ namespace GraphicalProgrammingEnvironment
         {
             // split after trim and store in array with space delimiter
             String command = commandLine.Text.Trim().ToLower();
-            commandList = command.Split(" ");
+            _commandList = command.Split(" ");
 
-            if (commandList[0].Equals("moveto")) // if match, call method
+            if (_commandList[0].Equals("moveto")) // if match, call method
             {
                 MoveTo();
             }
 
-            else if (commandList[0].Equals("drawline"))
+            else if (_commandList[0].Equals("drawline"))
             {
                 DrawLine();
             }
-            else if (commandList[0].Equals("square"))
+            else if (_commandList[0].Equals("square"))
             {
                 DrawSquare();
             }
-            else if (commandList[0].Equals("rectangle"))
+            else if (_commandList[0].Equals("rectangle"))
             {
                 DrawRectangle();
             }
-            else if (commandList[0].Equals("circle"))
+            else if (_commandList[0].Equals("circle"))
             {
                 DrawCircle();
             }
-            else if (commandList[0].Equals("reset"))
+            else if (_commandList[0].Equals("triangle"))
+            {
+                DrawTriangle();
+            }
+            else if (_commandList[0].Equals("reset"))
             {
                 ResetPen();
             }
-            else if (commandList[0].Equals("clear"))
+            else if (_commandList[0].Equals("clear"))
             {
                 ClearImage();
                 drawBox.Refresh();
             }
-            else if (commandList[0].Equals("quit"))
+            else if (_commandList[0].Equals("quit"))
             {
                 Application.Exit();
             }
@@ -112,12 +110,12 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-                MyCanvas.MoveTo(Int32.Parse(commandList[1]),
-                    Int32.Parse(commandList[2]));
+                MyCanvas.MoveTo(int.Parse(_commandList[1]),
+                    int.Parse(_commandList[2]));
             }
             catch (IndexOutOfRangeException) // catch if no number has been entered after command
             {
-                MessageBox.Show("Must enter a number after command.");
+                MessageBox.Show(@"Must enter a number after command.");
             }
         }
 
@@ -125,13 +123,13 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-                MyCanvas.DrawLine(Int32.Parse(commandList[1]),
-                    Int32.Parse(commandList[2])); // use the index to determine values for shape
-                commandLine.Text = ("Line has been drawn");
+                MyCanvas.DrawLine(int.Parse(_commandList[1]),
+                    int.Parse(_commandList[2])); // use the index to determine values for shape
+                commandLine.Text = (@"Line has been drawn");
             }
             catch (IndexOutOfRangeException)
             {
-                MessageBox.Show("Must enter a number after command.");
+                MessageBox.Show(@"Must enter a number after command.");
             }
         }
 
@@ -139,12 +137,12 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-                MyCanvas.DrawSquare(Int32.Parse(commandList[1]));
-                commandLine.Text = ("Square has been drawn");
+                MyCanvas.DrawSquare(int.Parse(_commandList[1]));
+                commandLine.Text = (@"Square has been drawn");
             }
             catch (IndexOutOfRangeException)
             {
-                MessageBox.Show("Must enter a number after command.");
+                MessageBox.Show(@"Must enter a number after command.");
             }
         }
 
@@ -152,13 +150,13 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-                MyCanvas.DrawRectangle(Int32.Parse(commandList[1]),
-                    Int32.Parse(commandList[2]));
-                commandLine.Text = ("Rectangle has been drawn");
+                MyCanvas.DrawRectangle(int.Parse(_commandList[1]),
+                    int.Parse(_commandList[2]));
+                commandLine.Text = (@"Rectangle has been drawn");
             }
             catch (IndexOutOfRangeException)
             {
-                MessageBox.Show("Must enter a number after command.");
+                MessageBox.Show(@"Must enter a number after command.");
             }
         }
 
@@ -166,20 +164,33 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-                MyCanvas.DrawCircle(Int32.Parse(commandList[1]));
-                commandLine.Text = "Circle has been drawn.";
+                MyCanvas.DrawCircle(int.Parse(_commandList[1]));
+                commandLine.Text = @"Circle has been drawn.";
             }
             catch (IndexOutOfRangeException)
             {
-                MessageBox.Show("Must enter a number after command.");
+                MessageBox.Show(@"Must enter a number after command.");
             }
         }
 
+        private void DrawTriangle()
+        {
+            try
+            {
+                MyCanvas.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
+                    int.Parse(_commandList[3]), int.Parse(_commandList[4]), int.Parse(_commandList[5]),
+                    int.Parse(_commandList[6]));
+            }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show(@"Must enter 6 numbers after command.");
+            }
+        }
 
         /// <summary>
         /// Method to clear the bitmap on command
         /// </summary>
-        public void ClearImage()
+        private void ClearImage()
         {
             Graphics myGraphics = Graphics.FromImage(OutputBitMap);
             myGraphics.Clear(Color.Teal);
