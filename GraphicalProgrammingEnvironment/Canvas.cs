@@ -28,6 +28,9 @@ namespace GraphicalProgrammingEnvironment
             myPen = new Pen(Color.White, 1); // create a standard pen
         }
 
+        /// <summary>
+        /// Create new Canvas method to call in testing class
+        /// </summary>
         public Canvas()
         {
         }

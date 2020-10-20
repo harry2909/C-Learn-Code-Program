@@ -7,19 +7,28 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TestGPE
 
 {
+    /// <summary>
+    /// Setup Test Class to test methods
+    /// </summary>
     [TestClass]
     public class UnitTest1
     {
-        Canvas _canvas = new Canvas();
+        Canvas _canvas = new Canvas(); // call new instance of canvas
 
-        Bitmap OutputBitMap = new Bitmap(840, 680);
+        Bitmap OutputBitMap = new Bitmap(840, 680); // set up new bitmap
 
+        /// <summary>
+        /// Testing the initialisation of canvas with bitmap
+        /// </summary>
         [TestInitialize]
         public void Initialize()
         {
             _canvas = new Canvas(Graphics.FromImage(OutputBitMap));
         }
 
+        /// <summary>
+        /// Method to test that the array is splitting correctly
+        /// </summary>
         [TestMethod]
         public void CallDrawMethodWithCommand()
         {

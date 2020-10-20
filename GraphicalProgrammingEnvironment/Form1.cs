@@ -17,8 +17,14 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         Bitmap OutputBitMap = new Bitmap(840, 680);
 
+        /// <summary>
+        /// Call an instance of canvas
+        /// </summary>
         Canvas MyCanvas;
 
+        /// <summary>
+        /// Array to hold list of commands
+        /// </summary>
         private String[] commandList;
 
         public Form1()
@@ -31,7 +37,7 @@ namespace GraphicalProgrammingEnvironment
         /// Creating method to handle enter key event
         /// </summary>
         /// <param name="sender">The object that will trigger event</param>
-        /// <param name="e">Event data</param>
+        /// <param name="e">Key event data</param>
         private void commandLine_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -56,7 +62,7 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         private void ProcessCommands()
         {
-            // split after trim and store in array
+            // split after trim and store in array with space delimiter
             String command = commandLine.Text.Trim().ToLower();
             commandList = command.Split(" ");
 
@@ -65,7 +71,7 @@ namespace GraphicalProgrammingEnvironment
                 MoveTo();
             }
 
-            else if (commandList[0].Equals("line")) // if match, call method
+            else if (commandList[0].Equals("line"))
             {
                 DrawLine();
             }
@@ -105,7 +111,7 @@ namespace GraphicalProgrammingEnvironment
                 MyCanvas.MoveTo(Int32.Parse(commandList[1]),
                     Int32.Parse(commandList[2]));
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException) // catch if no number has been entered after command
             {
                 MessageBox.Show("Must enter a number after command.");
             }
