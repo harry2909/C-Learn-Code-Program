@@ -71,7 +71,7 @@ namespace GraphicalProgrammingEnvironment
                 MoveTo();
             }
 
-            else if (commandList[0].Equals("line"))
+            else if (commandList[0].Equals("drawline"))
             {
                 DrawLine();
             }
@@ -86,6 +86,10 @@ namespace GraphicalProgrammingEnvironment
             else if (commandList[0].Equals("circle"))
             {
                 DrawCircle();
+            }
+            else if (commandList[0].Equals("reset"))
+            {
+                ResetPen();
             }
             else if (commandList[0].Equals("clear"))
             {
@@ -179,6 +183,11 @@ namespace GraphicalProgrammingEnvironment
         {
             Graphics myGraphics = Graphics.FromImage(OutputBitMap);
             myGraphics.Clear(Color.Teal);
+        }
+
+        private void ResetPen()
+        {
+            MyCanvas.ResetPen(0, 0);
         }
     }
 }

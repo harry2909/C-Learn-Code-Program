@@ -67,5 +67,11 @@ namespace GraphicalProgrammingEnvironment
             xPos = toX;
             yPos = toY;
         }
+
+        public void ResetPen(int toX, int toY)
+        {
+            xPos = toX;
+            yPos = toY;
+        }
     }
 }
