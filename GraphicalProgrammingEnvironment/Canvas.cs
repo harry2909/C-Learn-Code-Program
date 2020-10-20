@@ -12,12 +12,12 @@ namespace GraphicalProgrammingEnvironment
     {
         // instance data for pen, position and graphics
         // the graphics context is the area of the form to draw on
-        Graphics myGraph;
+        private readonly Graphics _myGraph;
 
-        Pen myPen;
+        private readonly Pen _myPen;
 
         // the position of the pen when drawing
-        int xPos, yPos;
+        private int _xPos, _yPos;
 
         /// <summary>
         /// Constructor initialises canvas.
@@ -25,9 +25,9 @@ namespace GraphicalProgrammingEnvironment
         /// <param name="myGraph">Graphics context</param>
         public Canvas(Graphics myGraph)
         {
-            this.myGraph = myGraph; // this is referring to instance data
-            xPos = yPos = 0;
-            myPen = new Pen(Color.White, 1); // create a standard pen
+            this._myGraph = myGraph; // this is referring to instance data
+            _xPos = _yPos = 0;
+            _myPen = new Pen(Color.White, 1); // create a standard pen
         }
 
         /// <summary>
@@ -44,41 +44,41 @@ namespace GraphicalProgrammingEnvironment
         /// <param name="toY">y position to draw to</param>
         public void DrawLine(int toX, int toY)
         {
-            myGraph.DrawLine(myPen, xPos, yPos, toX, toY);
-            xPos = toX; // current x position is updated to where the lined is drawn to
-            yPos = toY; // current y position is updated to where the lined is drawn to
+            _myGraph.DrawLine(_myPen, _xPos, _yPos, toX, toY);
+            _xPos = toX; // current x position is updated to where the lined is drawn to
+            _yPos = toY; // current y position is updated to where the lined is drawn to
         }
 
         public void DrawSquare(int width)
         {
-            myGraph.DrawRectangle(myPen, xPos, yPos, xPos + width, yPos + width);
+            _myGraph.DrawRectangle(_myPen, _xPos, _yPos, _xPos + width, _yPos + width);
         }
 
         public void DrawRectangle(int width, int height)
         {
-            myGraph.DrawRectangle(myPen, xPos, yPos, xPos + width, yPos + height);
+            _myGraph.DrawRectangle(_myPen, _xPos, _yPos, _xPos + width, _yPos + height);
         }
 
         public void DrawCircle(float radius)
         {
-            myGraph.DrawEllipse(myPen, xPos, yPos, radius + radius, radius + radius);
+            _myGraph.DrawEllipse(_myPen, _xPos, _yPos, radius + radius, radius + radius);
         }
 
         public void MoveTo(int toX, int toY)
         {
-            xPos = toX;
-            yPos = toY;
+            _xPos = toX;
+            _yPos = toY;
         }
 
         public void ResetPen(int toX, int toY)
         {
-            xPos = toX;
-            yPos = toY;
+            _xPos = toX;
+            _yPos = toY;
         }
 
         public void DrawTriangle(int xPos, int yPos, int xPos2, int yPos2, int xPos3, int yPos3)
         {
-            Point[] pnt = new Point[3];
+            var pnt = new Point[3];
 
             pnt[0].X = xPos;
             pnt[0].Y = yPos;
@@ -89,7 +89,7 @@ namespace GraphicalProgrammingEnvironment
             pnt[2].X = xPos3;
             pnt[2].Y = yPos3;
             
-            myGraph.DrawPolygon(myPen, pnt);
+            _myGraph.DrawPolygon(_myPen, pnt);
         }
     }
 }
