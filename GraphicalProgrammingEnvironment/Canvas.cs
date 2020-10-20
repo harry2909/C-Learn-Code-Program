@@ -27,7 +27,7 @@ namespace GraphicalProgrammingEnvironment
             xPos = yPos = 0;
             myPen = new Pen(Color.White, 1); // create a standard pen
         }
-        
+
         public Canvas()
         {
         }
@@ -56,7 +56,7 @@ namespace GraphicalProgrammingEnvironment
 
         public void DrawCircle(float radius)
         {
-            myGraph.DrawEllipse(myPen, xPos , yPos, radius + radius, radius + radius);
+            myGraph.DrawEllipse(myPen, xPos, yPos, radius + radius, radius + radius);
         }
 
         public void MoveTo(int toX, int toY)
@@ -64,6 +64,5 @@ namespace GraphicalProgrammingEnvironment
             xPos = toX;
             yPos = toY;
         }
-        
     }
 }

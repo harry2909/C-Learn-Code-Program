@@ -38,7 +38,6 @@ namespace GraphicalProgrammingEnvironment
             {
                 ProcessCommands();
             }
-           
         }
 
         /// <summary>
@@ -97,7 +96,7 @@ namespace GraphicalProgrammingEnvironment
         }
 
         /// <summary>
-        /// Methods to draw
+        /// Methods to draw shapes based on command input
         /// </summary>
         private void MoveTo()
         {
@@ -126,9 +125,6 @@ namespace GraphicalProgrammingEnvironment
             }
         }
 
-        /// <summary>
-        /// Method to draw a square
-        /// </summary>
         private void DrawSquare()
         {
             try
@@ -142,9 +138,6 @@ namespace GraphicalProgrammingEnvironment
             }
         }
 
-        /// <summary>
-        /// Method to draw a rectangle
-        /// </summary>
         private void DrawRectangle()
         {
             try
@@ -174,7 +167,7 @@ namespace GraphicalProgrammingEnvironment
 
 
         /// <summary>
-        /// Method to reset the bit map on command
+        /// Method to clear the bitmap on command
         /// </summary>
         public void ClearImage()
         {
