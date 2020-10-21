@@ -1,4 +1,7 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace GraphicalProgrammingEnvironment
 
@@ -12,10 +15,12 @@ namespace GraphicalProgrammingEnvironment
         // the graphics context is the area of the form to draw on
         private readonly Graphics _myGraph;
 
-        private readonly Pen _myPen;
+        private Pen _myPen;
 
         // the position of the pen when drawing
         private int _xPos, _yPos;
+
+        private ComboBox penBox;
 
         /// <summary>
         /// Constructor initialises canvas.
@@ -25,7 +30,7 @@ namespace GraphicalProgrammingEnvironment
         {
             this._myGraph = myGraph; // this is referring to instance data
             _xPos = _yPos = 0;
-            _myPen = new Pen(Color.White, 1); // create a standard pen
+            _myPen = new Pen(Color.Black, 1); // create a standard pen
         }
 
         /// <summary>
@@ -80,14 +85,48 @@ namespace GraphicalProgrammingEnvironment
 
             pnt[0].X = xPos;
             pnt[0].Y = yPos;
-            
+
             pnt[1].X = xPos2;
             pnt[1].Y = yPos2;
-            
+
             pnt[2].X = xPos3;
             pnt[2].Y = yPos3;
-            
+
             _myGraph.DrawPolygon(_myPen, pnt);
+        }
+
+
+        public void PenColourSet(String penColour)
+        {
+            Pen[] pensArray = new[]
+            {
+                _myPen = new Pen(Color.Blue),
+                _myPen = new Pen(Color.Red),
+                _myPen = new Pen(Color.Green),
+                _myPen = new Pen(Color.Orange),
+                _myPen = new Pen(Color.Yellow),
+            };
+
+            if (penColour.Contains("blue"))
+            {
+                _myPen = pensArray[0];
+            }
+            else if (penColour.Contains("red"))
+            {
+                _myPen = pensArray[1];
+            }
+            else if (penColour.Contains("green"))
+            {
+                _myPen = pensArray[2];
+            }
+            else if (penColour.Contains("orange"))
+            {
+                _myPen = pensArray[3];
+            }
+            else if (penColour.Contains("yellow"))
+            {
+                _myPen = pensArray[4];
+            }
         }
     }
 }

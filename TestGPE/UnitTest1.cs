@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.Windows.Forms;
 using GraphicalProgrammingEnvironment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,6 +16,8 @@ namespace TestGPE
         Canvas _canvas = new Canvas(); // call new instance of canvas
 
         Bitmap OutputBitMap = new Bitmap(840, 680); // set up new bitmap
+
+        Form1 _form = new Form1();
 
         /// <summary>
         /// Testing the initialisation of canvas with bitmap
@@ -100,10 +103,13 @@ namespace TestGPE
             }
             catch (IndexOutOfRangeException)
             {
-                Console.Write(@"This should throw");
+                Console.Write(@"This should throw as the parameters have not been specified.");
             }
         }
-
+        
+        /// <summary>
+        /// Method to test that pen coordinates reset properly
+        /// </summary>
         [TestMethod]
         public void TestPenReset()
         {
@@ -121,6 +127,36 @@ namespace TestGPE
             }
         }
         
-        
+        /// <summary>
+        /// Testing that the pen colours are changed appropriately 
+        /// </summary>
+        [TestMethod]
+        public void TestPenColour()
+        {
+            ComboBox penBox = new ComboBox();
+            penBox.Items.Insert(0, "Blue");
+            penBox.Items.Insert(1, "Red");
+            penBox.Items.Insert(2, "Green");
+            penBox.Items.Insert(3, "Orange");
+            penBox.Items.Insert(4, "Yellow");
+            _canvas.PenColourSet("blue");
+
+            penBox.SelectedIndex = penBox.FindStringExact("Blue");
+            if (penBox.SelectedIndex == 0)
+            {
+                try
+                {
+                    Assert.IsTrue(penBox.SelectedItem == "Red");
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine(@"This should throw as the index is set to 0 so 'blue'");
+                }
+            }
+            else if (penBox.SelectedIndex == 0)
+            {
+                Assert.IsTrue(penBox.SelectedItem == "Blue");
+            }
+        }
     }
 }

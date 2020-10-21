@@ -25,6 +25,7 @@ namespace GraphicalProgrammingEnvironment
         {
             InitializeComponent();
             MyCanvas = new Canvas(Graphics.FromImage(OutputBitMap)); // class for handling drawing
+            PenColour();
         }
 
         /// <summary>
@@ -56,6 +57,11 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         private void ProcessCommands()
         {
+            if (penBox.SelectedIndex > -1)
+            {
+                GetPenColour();
+            }
+
             // split after trim and store in array with space delimiter
             String command = commandLine.Text.Trim().ToLower();
             _commandList = command.Split(" ");
@@ -193,12 +199,47 @@ namespace GraphicalProgrammingEnvironment
         private void ClearImage()
         {
             var myGraphics = Graphics.FromImage(OutputBitMap);
-            myGraphics.Clear(Color.Teal);
+            myGraphics.Clear(Color.AliceBlue);
         }
 
         private void ResetPen()
         {
             MyCanvas.ResetPen(0, 0);
+        }
+
+        private void PenColour()
+        {
+            penBox.Items.Insert(0, "Blue");
+            penBox.Items.Insert(1, "Red");
+            penBox.Items.Insert(2, "Green");
+            penBox.Items.Insert(3, "Orange");
+            penBox.Items.Insert(4, "Yellow");
+        }
+
+        private void GetPenColour()
+        {
+            switch (penBox.SelectedIndex)
+            {
+                case 0:
+                    MyCanvas.PenColourSet("blue");
+                    break;
+
+                case 1:
+                    MyCanvas.PenColourSet("red");
+                    break;
+
+                case 2:
+                    MyCanvas.PenColourSet("green");
+                    break;
+
+                case 3:
+                    MyCanvas.PenColourSet("orange");
+                    break;
+
+                case 4:
+                    MyCanvas.PenColourSet("yellow");
+                    break;
+            }
         }
     }
 }
