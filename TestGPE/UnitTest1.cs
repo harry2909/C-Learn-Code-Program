@@ -106,7 +106,7 @@ namespace TestGPE
                 Console.Write(@"This should throw as the parameters have not been specified.");
             }
         }
-
+        
         /// <summary>
         /// Method to test that pen coordinates reset properly
         /// </summary>
@@ -126,9 +126,9 @@ namespace TestGPE
                 Assert.IsTrue(Int32.Parse(commandList[2]) < toY);
             }
         }
-
+        
         /// <summary>
-        /// Testing that the pen colours are changed appropriately 
+        /// Testing that the pen colours are changed appropriatley 
         /// </summary>
         [TestMethod]
         public void TestPenColour()

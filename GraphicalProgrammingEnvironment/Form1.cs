@@ -38,6 +38,7 @@ namespace GraphicalProgrammingEnvironment
             if (e.KeyCode == Keys.Enter)
             {
                 ProcessCommands();
+                commandLine.Text = "";
             }
         }
 
@@ -61,7 +62,7 @@ namespace GraphicalProgrammingEnvironment
             {
                 GetPenColour();
             }
-
+            
             // split after trim and store in array with space delimiter
             String command = commandLine.Text.Trim().ToLower();
             _commandList = command.Split(" ");
@@ -112,6 +113,7 @@ namespace GraphicalProgrammingEnvironment
             {
                 Application.Exit();
             }
+            
 
             Refresh();
         }
@@ -191,8 +193,7 @@ namespace GraphicalProgrammingEnvironment
             try
             {
                 MyCanvas.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
-                    int.Parse(_commandList[3]), int.Parse(_commandList[4]), int.Parse(_commandList[5]),
-                    int.Parse(_commandList[6]));
+                    int.Parse(_commandList[3]), int.Parse(_commandList[4]));
             }
             catch (IndexOutOfRangeException)
             {
@@ -254,5 +255,8 @@ namespace GraphicalProgrammingEnvironment
             String a = "moveto 'number 1' 'number 2' Moves pen position \n reset Resets pen position";
             commandLine.Text += Environment.NewLine + "yo";
         }
+
+       
+        
     }
 }
