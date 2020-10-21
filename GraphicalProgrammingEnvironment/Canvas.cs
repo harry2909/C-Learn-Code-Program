@@ -53,6 +53,13 @@ namespace GraphicalProgrammingEnvironment
         public void DrawSquare(int width)
         {
             _myGraph.DrawRectangle(_myPen, _xPos, _yPos, _xPos + width, _yPos + width);
+            using (var brush = new SolidBrush(_myPen.Color))
+            {
+                if (fill == true)
+                {
+                    _myGraph.FillRectangle(brush, _xPos, _yPos,_xPos + width, _yPos + width);
+                }
+            }
         }
 
         public void DrawRectangle(int width, int height)
