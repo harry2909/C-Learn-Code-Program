@@ -48,19 +48,18 @@ namespace GraphicalProgrammingEnvironment
             _myGraph.DrawLine(_myPen, _xPos, _yPos, toX, toY);
             _xPos = toX; // current x position is updated to where the lined is drawn to
             _yPos = toY; // current y position is updated to where the lined is drawn to
-            _myPen.Dispose();
         }
 
         public void DrawSquare(int width)
         {
             _myGraph.DrawRectangle(_myPen, _xPos, _yPos, _xPos + width, _yPos + width);
-            _myPen.Dispose();
         }
 
         public void DrawRectangle(int width, int height)
         {
             _myGraph.DrawRectangle(_myPen, _xPos, _yPos, _xPos + width, _yPos + height);
-            _myPen.Dispose();
+            
+            
             using (var brush = new SolidBrush(_myPen.Color))
             {
                 if (fill == true)
@@ -73,7 +72,13 @@ namespace GraphicalProgrammingEnvironment
         public void DrawCircle(float radius)
         {
             _myGraph.DrawEllipse(_myPen, _xPos, _yPos, radius + radius, radius + radius);
-            _myPen.Dispose();
+            using (var brush = new SolidBrush(_myPen.Color))
+            {
+                if (fill == true)
+                {
+                    _myGraph.FillEllipse(brush, _xPos, _yPos, radius + radius, radius + radius);
+                }
+            }
         }
 
         public void MoveTo(int toX, int toY)
@@ -102,7 +107,14 @@ namespace GraphicalProgrammingEnvironment
             pnt[2].Y = (float) (y + distance * Math.Sin(angle + Math.PI / 3));
 
             _myGraph.DrawPolygon(_myPen, pnt);
-            _myPen.Dispose();
+            
+            using (var brush = new SolidBrush(_myPen.Color))
+            {
+                if (fill == true)
+                {
+                    _myGraph.FillPolygon(brush, pnt);
+                }
+            }
         }
 
         public void PenColourSet(String penColour)
