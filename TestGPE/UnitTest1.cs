@@ -17,8 +17,6 @@ namespace TestGPE
 
         Bitmap OutputBitMap = new Bitmap(840, 680); // set up new bitmap
 
-        Form1 _form = new Form1();
-
         /// <summary>
         /// Testing the initialisation of canvas with bitmap
         /// </summary>
@@ -146,7 +144,7 @@ namespace TestGPE
             {
                 try
                 {
-                    Assert.IsTrue(penBox.SelectedItem == "Red");
+                    Assert.IsTrue((string) penBox.SelectedItem == "Red");
                 }
                 catch (Exception)
                 {
@@ -155,7 +153,7 @@ namespace TestGPE
             }
             else if (penBox.SelectedIndex == 0)
             {
-                Assert.IsTrue(penBox.SelectedItem == "Blue");
+                Assert.IsTrue((string) penBox.SelectedItem == "Blue");
             }
         }
     }

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Drawing;
-using System.Windows.Forms;
 
 namespace GraphicalProgrammingEnvironment
 
@@ -19,9 +17,7 @@ namespace GraphicalProgrammingEnvironment
 
         // the position of the pen when drawing
         private int _xPos, _yPos;
-
-        private ComboBox penBox;
-
+        
         /// <summary>
         /// Constructor initialises canvas.
         /// </summary>
