@@ -59,7 +59,7 @@
             this.commandLine.Name = "commandLine";
             this.commandLine.Size = new System.Drawing.Size(891, 138);
             this.commandLine.TabIndex = 3;
-            this.commandLine.Text = "Enter a command followed by the size of the shape: Example: line 50 50.....Press " + "enter to continue";
+            this.commandLine.Text = "";
             this.commandLine.KeyDown += new System.Windows.Forms.KeyEventHandler(this.commandLine_KeyDown);
             // 
             // inputLabel

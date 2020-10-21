@@ -104,12 +104,15 @@ namespace GraphicalProgrammingEnvironment
                 ClearImage();
                 drawBox.Refresh();
             }
+            else if (_commandList[0].Equals("help"))
+            {
+                AllCommands();
+            }
             else if (_commandList[0].Equals("quit"))
             {
                 Application.Exit();
             }
 
-            commandLine.Text = "";
             Refresh();
         }
 
@@ -244,6 +247,12 @@ namespace GraphicalProgrammingEnvironment
                     MyCanvas.PenColourSet("yellow");
                     break;
             }
+        }
+
+        private void AllCommands()
+        {
+            String a = "moveto 'number 1' 'number 2' Moves pen position \n reset Resets pen position";
+            commandLine.Text += Environment.NewLine + "yo";
         }
     }
 }
