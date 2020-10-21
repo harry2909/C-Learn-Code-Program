@@ -258,17 +258,24 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         private void AllCommands()
         {
-            const string a = "\n|moveto 'number 1' 'number 2' => moves pen position \n|reset => Resets pen position " +
-                             "\n|drawline 'number 1' " +
-                             "'number 2' => Draws a line to given position \n|square 'number 1' => " +
-                             "Draws a square with given width \n|rectangle 'number 1' 'number 2' => Draws a rectangle" +
+            const string a = "\n|moveto" + " " + " 'number 1' " + " " + " 'number 2' " + " " + " => " + " " +
+                             " moves pen position \n|reset" + " " + " => Resets pen position " +
+                             "\n|drawline" + " " + " 'number 1'" + " " + " " +
+                             "'number 2'" + " " + " =>" + " " + " Draws a line to given position \n|square" + " " +
+                             " 'number 1'" + " " + " => " + " " + " " +
+                             "Draws a square with given width \n|rectangle" + " " + "  'number 1'" + " " +
+                             "  'number 2'" + " " + "  =>" + " " + "  Draws a rectangle" +
                              " with given" +
-                             " width and height \n|circle => Draws a circle with given radius  \n|triangle 'number 1' " +
-                             "'number 2' " +
-                             "'number 3' 'number 4' => Draws a triangle with given" +
-                             " 2 points, distance and angle \n|pencolour " +
-                             "'colour' => Changes pen colour to those listed in combobox  \n|clear => Clears " +
-                             "canvas\n|quit => " +
+                             " width and height \n|circle" + " " + "  =>" + " " +
+                             "  Draws a circle with given radius  \n|triangle" + " " + "  'number 1'" + " " + "  " +
+                             "'number 2'" + " " + "  " +
+                             "'number 3'" + " " + "  'number 4'" + " " + "  =>" + " " +
+                             "  Draws a triangle with given" +
+                             " 2 points, distance and angle \n|pencolour " + " " + " " +
+                             "'colour' " + " " + " =>" + " " +
+                             "  Changes pen colour to those listed in combobox  \n|clear" + " " + "  =>" + " " +
+                             "  Clears " +
+                             "canvas\n|quit" + " " + "  =>" + " " + "  " +
                              "Exits program";
             commandLine.Text = a;
         }
