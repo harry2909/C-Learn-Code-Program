@@ -37,8 +37,15 @@ namespace GraphicalProgrammingEnvironment
         {
             if (e.KeyCode == Keys.Enter)
             {
-                ProcessCommands();
-                commandLine.Text = "";
+                if (commandLine.Text == @"help")
+                {
+                    AllCommands();
+                }
+                else
+                {
+                    ProcessCommands();
+                    commandLine.Text = "";
+                }
             }
         }
 
@@ -62,7 +69,7 @@ namespace GraphicalProgrammingEnvironment
             {
                 GetPenColour();
             }
-            
+
             // split after trim and store in array with space delimiter
             String command = commandLine.Text.Trim().ToLower();
             _commandList = command.Split(" ");
@@ -105,15 +112,11 @@ namespace GraphicalProgrammingEnvironment
                 ClearImage();
                 drawBox.Refresh();
             }
-            else if (_commandList[0].Equals("help"))
-            {
-                AllCommands();
-            }
             else if (_commandList[0].Equals("quit"))
             {
                 Application.Exit();
             }
-            
+
 
             Refresh();
         }
@@ -250,13 +253,24 @@ namespace GraphicalProgrammingEnvironment
             }
         }
 
+        /// <summary>
+        /// Method to list all commands
+        /// </summary>
         private void AllCommands()
         {
-            String a = "moveto 'number 1' 'number 2' Moves pen position \n reset Resets pen position";
-            commandLine.Text += Environment.NewLine + "yo";
+            const string a = "\n|moveto 'number 1' 'number 2' => moves pen position \n|reset => Resets pen position " +
+                             "\n|drawline 'number 1' " +
+                             "'number 2' => Draws a line to given position \n|square 'number 1' => " +
+                             "Draws a square with given width \n|rectangle 'number 1' 'number 2' => Draws a rectangle" +
+                             " with given" +
+                             " width and height \n|circle => Draws a circle with given radius  \n|triangle 'number 1' " +
+                             "'number 2' " +
+                             "'number 3' 'number 4' => Draws a triangle with given" +
+                             " 2 points, distance and angle \n|pencolour " +
+                             "'colour' => Changes pen colour to those listed in combobox  \n|clear => Clears " +
+                             "canvas\n|quit => " +
+                             "Exits program";
+            commandLine.Text = a;
         }
-
-       
-        
     }
 }

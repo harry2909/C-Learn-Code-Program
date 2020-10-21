@@ -86,11 +86,11 @@ namespace GraphicalProgrammingEnvironment
             pnt[0].X = x;
             pnt[0].Y = y;
 
-            pnt[1].X = (float)(x + distance * Math.Cos(angle));
-            pnt[1].Y = (float)(y + distance * Math.Sin(angle));
+            pnt[1].X = (float) (x + distance * Math.Cos(angle));
+            pnt[1].Y = (float) (y + distance * Math.Sin(angle));
 
-            pnt[2].X = (float)(x + distance * Math.Cos(angle + Math.PI / 3));
-            pnt[2].Y = (float)(y + distance * Math.Sin(angle + Math.PI / 3));
+            pnt[2].X = (float) (x + distance * Math.Cos(angle + Math.PI / 3));
+            pnt[2].Y = (float) (y + distance * Math.Sin(angle + Math.PI / 3));
 
             _myGraph.DrawPolygon(_myPen, pnt);
         }
