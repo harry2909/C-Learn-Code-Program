@@ -195,8 +195,19 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-                MyCanvas.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
-                    int.Parse(_commandList[3]), int.Parse(_commandList[4]));
+                if (_commandList[5].Equals("fill"))
+                {
+                    MyCanvas.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
+                        int.Parse(_commandList[3]), int.Parse(_commandList[4]));
+                    
+                    
+                }
+                else
+                { 
+                    MyCanvas.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
+                    int.Parse(_commandList[3]), int.Parse(_commandList[4]));  
+                }
+                
             }
             catch (IndexOutOfRangeException)
             {
