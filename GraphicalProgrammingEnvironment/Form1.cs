@@ -91,6 +91,10 @@ namespace GraphicalProgrammingEnvironment
             {
                 DrawTriangle();
             }
+            else if (_commandList[0].Equals("pencolour"))
+            {
+               MyCanvas.PenColourSet(_commandList[1]);
+            }
             else if (_commandList[0].Equals("reset"))
             {
                 ResetPen();
