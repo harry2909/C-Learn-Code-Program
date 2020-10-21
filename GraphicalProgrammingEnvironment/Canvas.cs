@@ -17,7 +17,7 @@ namespace GraphicalProgrammingEnvironment
 
         // the position of the pen when drawing
         private int _xPos, _yPos;
-        
+
         /// <summary>
         /// Constructor initialises canvas.
         /// </summary>
