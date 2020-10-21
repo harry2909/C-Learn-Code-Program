@@ -78,7 +78,6 @@ namespace GraphicalProgrammingEnvironment
             {
                 MoveTo();
             }
-
             else if (_commandList[0].Equals("drawline"))
             {
                 DrawLine();
@@ -94,6 +93,14 @@ namespace GraphicalProgrammingEnvironment
             else if (_commandList[0].Equals("circle"))
             {
                 DrawCircle();
+            }
+            else if (_commandList[0].Equals("fill"))
+            {
+                MyCanvas.CheckFill(true);
+            }
+            else if (_commandList[0].Equals("filloff"))
+            {
+                MyCanvas.CheckFill(false);
             }
             else if (_commandList[0].Equals("triangle"))
             {
@@ -166,17 +173,18 @@ namespace GraphicalProgrammingEnvironment
 
         private void DrawRectangle()
         {
-            try
-            {
-                MyCanvas.DrawRectangle(int.Parse(_commandList[1]),
-                    int.Parse(_commandList[2]));
-                commandLine.Text = (@"Rectangle has been drawn");
-            }
-            catch (IndexOutOfRangeException)
-            {
-                MessageBox.Show(@"Must enter 2 numbers after command.");
-            }
+            // try
+            // {
+            MyCanvas.DrawRectangle(int.Parse(_commandList[1]),
+                int.Parse(_commandList[2]));
+            commandLine.Text = (@"Rectangle has been drawn");
+
+            // catch (IndexOutOfRangeException)
+            // {
+            //     MessageBox.Show(@"Must enter 2 numbers after command.");
+            // }
         }
+
 
         private void DrawCircle()
         {

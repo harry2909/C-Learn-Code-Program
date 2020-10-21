@@ -9,6 +9,8 @@ namespace GraphicalProgrammingEnvironment
     /// </summary>
     public class Canvas
     {
+        private bool fill = false;
+
         // instance data for pen, position and graphics
         // the graphics context is the area of the form to draw on
         private readonly Graphics _myGraph;
@@ -59,6 +61,13 @@ namespace GraphicalProgrammingEnvironment
         {
             _myGraph.DrawRectangle(_myPen, _xPos, _yPos, _xPos + width, _yPos + height);
             _myPen.Dispose();
+            using (var brush = new SolidBrush(_myPen.Color))
+            {
+                if (fill == true)
+                {
+                    _myGraph.FillRectangle(brush, _xPos, _yPos, _xPos + width, _yPos + height);
+                }
+            }
         }
 
         public void DrawCircle(float radius)
@@ -127,6 +136,19 @@ namespace GraphicalProgrammingEnvironment
             {
                 _myPen = pensArray[4];
             }
+        }
+
+        public void CheckFill(bool check)
+        {
+            if (check)
+            {
+                fill = true;
+            }
+            else
+            {
+                fill = false;
+            }
+
         }
     }
 }
