@@ -96,7 +96,6 @@ namespace GraphicalProgrammingEnvironment
             _myPen.Dispose();
         }
 
-
         public void PenColourSet(String penColour)
         {
             Pen[] pensArray = new[]
