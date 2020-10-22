@@ -295,24 +295,29 @@ namespace GraphicalProgrammingEnvironment
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            Stream myStream;
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            saveFileDialog1.FilterIndex = 2;
-            saveFileDialog1.RestoreDirectory = true;
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            try
             {
-                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                var saveFileDialog1 = new SaveFileDialog
                 {
-                    myStream.Close();
-                    using (FileStream fs = File.Create(saveFileDialog1.FileName))
+                    Filter = @"txt files (*.txt)|*.txt|All files (*.*)|*.*", FilterIndex = 2, RestoreDirectory = true
+                };
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    Stream myStream;
+                    if ((myStream = saveFileDialog1.OpenFile()) != null)
                     {
-                        Byte[] info = new UTF8Encoding(true).GetBytes(programArea.Text);
+                        myStream.Close();
+                        using FileStream fs = File.Create(saveFileDialog1.FileName);
+                        var info = new UTF8Encoding(true).GetBytes(programArea.Text);
                         // Add some information to the file.
                         fs.Write(info, 0, info.Length);
                     }
                 }
+            }
+            catch (IOException)
+            {
+                MessageBox.Show(@"Error with file.");
             }
         }
 
@@ -326,11 +331,11 @@ namespace GraphicalProgrammingEnvironment
                     using (OpenFileDialog dlgOpen = new OpenFileDialog())
                     {
                         // Available file extensions
-                        dlgOpen.Filter = "All files(*.*)|*.*";
+                        dlgOpen.Filter = @"All files(*.*)|*.*";
                         // Initial directory
                         dlgOpen.InitialDirectory = "D:";
                         // OpenFileDialog title
-                        dlgOpen.Title = "Open";
+                        dlgOpen.Title = @"Open";
                         // Show OpenFileDialog box
                         if (dlgOpen.ShowDialog() == DialogResult.OK)
                         {
