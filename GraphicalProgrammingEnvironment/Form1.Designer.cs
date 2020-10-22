@@ -36,7 +36,6 @@
             this.commandLineLabel = new System.Windows.Forms.Label();
             this.drawBox = new System.Windows.Forms.PictureBox();
             this.runButton = new System.Windows.Forms.Button();
-            this.fillButton = new System.Windows.Forms.Button();
             this.penBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
@@ -117,19 +116,10 @@
             this.runButton.Text = "Run";
             this.runButton.UseVisualStyleBackColor = true;
             // 
-            // fillButton
-            // 
-            this.fillButton.Location = new System.Drawing.Point(136, 427);
-            this.fillButton.Name = "fillButton";
-            this.fillButton.Size = new System.Drawing.Size(75, 32);
-            this.fillButton.TabIndex = 9;
-            this.fillButton.Text = "Fill";
-            this.fillButton.UseVisualStyleBackColor = true;
-            // 
             // penBox
             // 
             this.penBox.FormattingEnabled = true;
-            this.penBox.Location = new System.Drawing.Point(237, 438);
+            this.penBox.Location = new System.Drawing.Point(111, 438);
             this.penBox.Name = "penBox";
             this.penBox.Size = new System.Drawing.Size(102, 21);
             this.penBox.TabIndex = 10;
@@ -139,7 +129,7 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(237, 422);
+            this.label1.Location = new System.Drawing.Point(112, 427);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 16);
             this.label1.TabIndex = 11;
@@ -176,7 +166,6 @@
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.penBox);
-            this.Controls.Add(this.fillButton);
             this.Controls.Add(this.runButton);
             this.Controls.Add(this.drawBox);
             this.Controls.Add(this.commandLineLabel);
@@ -199,7 +188,6 @@
 
         private System.Windows.Forms.ComboBox penBox;
 
-        private System.Windows.Forms.Button fillButton;
         private System.Windows.Forms.Button runButton;
 
         private System.Windows.Forms.PictureBox drawBox;

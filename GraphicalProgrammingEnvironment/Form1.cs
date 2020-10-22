@@ -206,8 +206,15 @@ namespace GraphicalProgrammingEnvironment
             try
             {
                 {
-                    _myCanvas.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
-                        int.Parse(_commandList[3]), int.Parse(_commandList[4]));
+                    if (_commandList.Length > 5)
+                    {
+                        MessageBox.Show(@"Too many parameters.");
+                    }
+                    else
+                    {
+                        _myCanvas.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
+                            int.Parse(_commandList[3]), int.Parse(_commandList[4]));
+                    }
                 }
             }
             catch (IndexOutOfRangeException)
@@ -320,7 +327,7 @@ namespace GraphicalProgrammingEnvironment
                     }
                 }
             }
-            catch (IOException)
+            catch (FileNotFoundException)
             {
                 MessageBox.Show(@"Error with file.");
             }
@@ -360,7 +367,7 @@ namespace GraphicalProgrammingEnvironment
                     }
                 }
             }
-            catch (IOException)
+            catch (FileNotFoundException)
             {
                 MessageBox.Show(@"No such file to load!");
             }
