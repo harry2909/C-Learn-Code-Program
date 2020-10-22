@@ -45,7 +45,9 @@
             // 
             // programArea
             // 
+            this.programArea.BackColor = System.Drawing.SystemColors.WindowText;
             this.programArea.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.programArea.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.programArea.Location = new System.Drawing.Point(27, 68);
             this.programArea.Name = "programArea";
             this.programArea.Size = new System.Drawing.Size(436, 350);
@@ -129,7 +131,7 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(112, 427);
+            this.label1.Location = new System.Drawing.Point(111, 421);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 16);
             this.label1.TabIndex = 11;
