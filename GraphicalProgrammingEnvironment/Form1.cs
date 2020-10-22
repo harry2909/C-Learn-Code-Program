@@ -125,7 +125,7 @@ namespace GraphicalProgrammingEnvironment
             {
                 Application.Exit();
             }
-            
+
 
             Refresh();
         }
@@ -307,12 +307,46 @@ namespace GraphicalProgrammingEnvironment
                     }
                 }
             }
-            catch (Exception)
+            catch (IOException)
             {
                 MessageBox.Show(@"No text to save!");
             }
         }
-        
-        
+
+
+        private void loadButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (programArea.Text == String.Empty)
+                {
+                    using (OpenFileDialog dlgOpen = new OpenFileDialog())
+                    {
+                        // Available file extensions
+                        dlgOpen.Filter = "All files(*.*)|*.*";
+                        // Initial directory
+                        dlgOpen.InitialDirectory = "D:";
+                        // OpenFileDialog title
+                        dlgOpen.Title = "Open";
+                        // Show OpenFileDialog box
+                        if (dlgOpen.ShowDialog() == DialogResult.OK)
+                        {
+                            StreamReader sr = new StreamReader(dlgOpen.FileName, Encoding.Default);
+                            // Get all text from the file
+                            string str = sr.ReadToEnd();
+                            // Close the StreamReader
+                            sr.Close();
+                            // Show the text in the rich textbox rtbMain
+                            programArea.Text = str;
+                        }
+                    }
+                }
+
+            }
+            catch (IOException)
+            {
+                MessageBox.Show(@"No such file to load!");
+            }
+        }
     }
 }
