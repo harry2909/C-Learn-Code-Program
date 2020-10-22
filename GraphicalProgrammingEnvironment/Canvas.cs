@@ -9,7 +9,7 @@ namespace GraphicalProgrammingEnvironment
     /// </summary>
     public class Canvas
     {
-        private bool fill = false;
+        private bool _fill;
 
         // instance data for pen, position and graphics
         // the graphics context is the area of the form to draw on
@@ -53,12 +53,10 @@ namespace GraphicalProgrammingEnvironment
         public void DrawSquare(int width)
         {
             _myGraph.DrawRectangle(_myPen, _xPos, _yPos, _xPos + width, _yPos + width);
-            using (var brush = new SolidBrush(_myPen.Color))
+            using var brush = new SolidBrush(_myPen.Color);
+            if (_fill)
             {
-                if (fill == true)
-                {
-                    _myGraph.FillRectangle(brush, _xPos, _yPos, _xPos + width, _yPos + width);
-                }
+                _myGraph.FillRectangle(brush, _xPos, _yPos, _xPos + width, _yPos + width);
             }
         }
 
@@ -67,24 +65,20 @@ namespace GraphicalProgrammingEnvironment
             _myGraph.DrawRectangle(_myPen, _xPos, _yPos, _xPos + width, _yPos + height);
 
 
-            using (var brush = new SolidBrush(_myPen.Color))
+            using var brush = new SolidBrush(_myPen.Color);
+            if (_fill)
             {
-                if (fill == true)
-                {
-                    _myGraph.FillRectangle(brush, _xPos, _yPos, _xPos + width, _yPos + height);
-                }
+                _myGraph.FillRectangle(brush, _xPos, _yPos, _xPos + width, _yPos + height);
             }
         }
 
         public void DrawCircle(float radius)
         {
             _myGraph.DrawEllipse(_myPen, _xPos, _yPos, radius + radius, radius + radius);
-            using (var brush = new SolidBrush(_myPen.Color))
+            using var brush = new SolidBrush(_myPen.Color);
+            if (_fill)
             {
-                if (fill == true)
-                {
-                    _myGraph.FillEllipse(brush, _xPos, _yPos, radius + radius, radius + radius);
-                }
+                _myGraph.FillEllipse(brush, _xPos, _yPos, radius + radius, radius + radius);
             }
         }
 
@@ -115,12 +109,10 @@ namespace GraphicalProgrammingEnvironment
 
             _myGraph.DrawPolygon(_myPen, pnt);
 
-            using (var brush = new SolidBrush(_myPen.Color))
+            using var brush = new SolidBrush(_myPen.Color);
+            if (_fill)
             {
-                if (fill == true)
-                {
-                    _myGraph.FillPolygon(brush, pnt);
-                }
+                _myGraph.FillPolygon(brush, pnt);
             }
         }
 
@@ -161,11 +153,11 @@ namespace GraphicalProgrammingEnvironment
         {
             if (check)
             {
-                fill = true;
+                _fill = true;
             }
             else
             {
-                fill = false;
+                _fill = false;
             }
         }
     }
