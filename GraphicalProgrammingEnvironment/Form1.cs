@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace GraphicalProgrammingEnvironment
@@ -9,22 +11,22 @@ namespace GraphicalProgrammingEnvironment
         /// <summary>
         /// Bitmap to draw on which will be displayed in drawBox
         /// </summary>
-        Bitmap OutputBitMap = new Bitmap(840, 680);
+        private readonly Bitmap _outputBitMap = new Bitmap(840, 680);
 
         /// <summary>
         /// Call an instance of canvas
         /// </summary>
-        Canvas MyCanvas;
+        private readonly Canvas _myCanvas;
 
         /// <summary>
         /// Array to hold list of commands
         /// </summary>
-        private String[] _commandList;
+        private string[] _commandList;
 
         public Form1()
         {
             InitializeComponent();
-            MyCanvas = new Canvas(Graphics.FromImage(OutputBitMap)); // class for handling drawing
+            _myCanvas = new Canvas(Graphics.FromImage(_outputBitMap)); // class for handling drawing
             PenColour();
         }
 
@@ -57,7 +59,7 @@ namespace GraphicalProgrammingEnvironment
         private void drawBox_Paint(object sender, PaintEventArgs e)
         {
             Graphics myGraph = e.Graphics; // get graphics context of form
-            myGraph.DrawImageUnscaled(OutputBitMap, 0, 0); // put off screen bitmap on form
+            myGraph.DrawImageUnscaled(_outputBitMap, 0, 0); // put off screen bitmap on form
         }
 
         /// <summary>
@@ -96,11 +98,11 @@ namespace GraphicalProgrammingEnvironment
             }
             else if (_commandList[0].Equals("fill"))
             {
-                MyCanvas.CheckFill(true);
+                _myCanvas.CheckFill(true);
             }
             else if (_commandList[0].Equals("filloff"))
             {
-                MyCanvas.CheckFill(false);
+                _myCanvas.CheckFill(false);
             }
             else if (_commandList[0].Equals("triangle"))
             {
@@ -108,7 +110,7 @@ namespace GraphicalProgrammingEnvironment
             }
             else if (_commandList[0].Equals("pencolour"))
             {
-                MyCanvas.PenColourSet(_commandList[1]);
+                _myCanvas.PenColourSet(_commandList[1]);
             }
             else if (_commandList[0].Equals("reset"))
             {
@@ -123,7 +125,7 @@ namespace GraphicalProgrammingEnvironment
             {
                 Application.Exit();
             }
-
+            
 
             Refresh();
         }
@@ -135,7 +137,7 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-                MyCanvas.MoveTo(int.Parse(_commandList[1]),
+                _myCanvas.MoveTo(int.Parse(_commandList[1]),
                     int.Parse(_commandList[2]));
             }
             catch (IndexOutOfRangeException) // catch if no number has been entered after command
@@ -148,7 +150,7 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-                MyCanvas.DrawLine(int.Parse(_commandList[1]),
+                _myCanvas.DrawLine(int.Parse(_commandList[1]),
                     int.Parse(_commandList[2])); // use the index to determine values for shape
                 commandLine.Text = (@"Line has been drawn");
             }
@@ -162,7 +164,7 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-                MyCanvas.DrawSquare(int.Parse(_commandList[1]));
+                _myCanvas.DrawSquare(int.Parse(_commandList[1]));
                 commandLine.Text = (@"Square has been drawn");
             }
             catch (IndexOutOfRangeException)
@@ -175,7 +177,7 @@ namespace GraphicalProgrammingEnvironment
         {
             // try
             // {
-            MyCanvas.DrawRectangle(int.Parse(_commandList[1]),
+            _myCanvas.DrawRectangle(int.Parse(_commandList[1]),
                 int.Parse(_commandList[2]));
             commandLine.Text = (@"Rectangle has been drawn");
 
@@ -190,7 +192,7 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-                MyCanvas.DrawCircle(int.Parse(_commandList[1]));
+                _myCanvas.DrawCircle(int.Parse(_commandList[1]));
                 commandLine.Text = @"Circle has been drawn.";
             }
             catch (IndexOutOfRangeException)
@@ -204,7 +206,7 @@ namespace GraphicalProgrammingEnvironment
             try
             {
                 {
-                    MyCanvas.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
+                    _myCanvas.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
                         int.Parse(_commandList[3]), int.Parse(_commandList[4]));
                 }
             }
@@ -219,13 +221,13 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         private void ClearImage()
         {
-            var myGraphics = Graphics.FromImage(OutputBitMap);
+            var myGraphics = Graphics.FromImage(_outputBitMap);
             myGraphics.Clear(Color.AliceBlue);
         }
 
         private void ResetPen()
         {
-            MyCanvas.ResetPen(0, 0);
+            _myCanvas.ResetPen(0, 0);
         }
 
         private void PenColour()
@@ -242,23 +244,23 @@ namespace GraphicalProgrammingEnvironment
             switch (penBox.SelectedIndex)
             {
                 case 0:
-                    MyCanvas.PenColourSet("blue");
+                    _myCanvas.PenColourSet("blue");
                     break;
 
                 case 1:
-                    MyCanvas.PenColourSet("red");
+                    _myCanvas.PenColourSet("red");
                     break;
 
                 case 2:
-                    MyCanvas.PenColourSet("green");
+                    _myCanvas.PenColourSet("green");
                     break;
 
                 case 3:
-                    MyCanvas.PenColourSet("orange");
+                    _myCanvas.PenColourSet("orange");
                     break;
 
                 case 4:
-                    MyCanvas.PenColourSet("yellow");
+                    _myCanvas.PenColourSet("yellow");
                     break;
             }
         }
@@ -289,5 +291,28 @@ namespace GraphicalProgrammingEnvironment
                              "Exits program";
             commandLine.Text = a;
         }
+
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (programArea.Text != String.Empty)
+                {
+                    using (FileStream fs = File.Create("D://testfile.txt"))
+                    {
+                        Byte[] info = new UTF8Encoding(true).GetBytes(programArea.Text);
+                        // Add some information to the file.
+                        fs.Write(info, 0, info.Length);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(@"No text to save!");
+            }
+        }
+        
+        
     }
 }

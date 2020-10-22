@@ -29,7 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.programmeArea = new System.Windows.Forms.RichTextBox();
+            this.programArea = new System.Windows.Forms.RichTextBox();
             this.commandLine = new System.Windows.Forms.RichTextBox();
             this.inputLabel = new System.Windows.Forms.Label();
             this.outputLabel = new System.Windows.Forms.Label();
@@ -39,16 +39,19 @@
             this.fillButton = new System.Windows.Forms.Button();
             this.penBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.loadButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize) (this.drawBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // programmeArea
+            // programArea
             // 
-            this.programmeArea.Location = new System.Drawing.Point(27, 68);
-            this.programmeArea.Name = "programmeArea";
-            this.programmeArea.Size = new System.Drawing.Size(436, 350);
-            this.programmeArea.TabIndex = 2;
-            this.programmeArea.Text = "";
+            this.programArea.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.programArea.Location = new System.Drawing.Point(27, 68);
+            this.programArea.Name = "programArea";
+            this.programArea.Size = new System.Drawing.Size(436, 350);
+            this.programArea.TabIndex = 2;
+            this.programArea.Text = "";
             // 
             // commandLine
             // 
@@ -143,12 +146,33 @@
             this.label1.Text = "Pen Colour\r\n";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(27, 22);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 32);
+            this.saveButton.TabIndex = 12;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // loadButton
+            // 
+            this.loadButton.Location = new System.Drawing.Point(111, 22);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(75, 32);
+            this.loadButton.TabIndex = 13;
+            this.loadButton.Text = "Load";
+            this.loadButton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(947, 652);
+            this.Controls.Add(this.loadButton);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.penBox);
             this.Controls.Add(this.fillButton);
@@ -158,12 +182,17 @@
             this.Controls.Add(this.outputLabel);
             this.Controls.Add(this.inputLabel);
             this.Controls.Add(this.commandLine);
-            this.Controls.Add(this.programmeArea);
+            this.Controls.Add(this.programArea);
             this.Name = "Form1";
             this.Text = "Programming Learning Environment";
             ((System.ComponentModel.ISupportInitialize) (this.drawBox)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button loadButton;
+        private System.Windows.Forms.Button saveButton;
+
+        private System.Windows.Forms.RichTextBox programArea;
 
         private System.Windows.Forms.Label label1;
 
@@ -178,7 +207,6 @@
         private System.Windows.Forms.Label commandLineLabel;
         private System.Windows.Forms.Label inputLabel;
         private System.Windows.Forms.Label outputLabel;
-        private System.Windows.Forms.RichTextBox programmeArea;
 
         #endregion
     }
