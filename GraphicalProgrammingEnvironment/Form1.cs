@@ -295,21 +295,24 @@ namespace GraphicalProgrammingEnvironment
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            try
+            Stream myStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if (programArea.Text != String.Empty)
+                if ((myStream = saveFileDialog1.OpenFile()) != null)
                 {
-                    using (FileStream fs = File.Create("D://testfile.txt"))
+                    myStream.Close();
+                    using (FileStream fs = File.Create(saveFileDialog1.FileName))
                     {
                         Byte[] info = new UTF8Encoding(true).GetBytes(programArea.Text);
                         // Add some information to the file.
                         fs.Write(info, 0, info.Length);
                     }
                 }
-            }
-            catch (IOException)
-            {
-                MessageBox.Show(@"No text to save!");
             }
         }
 
@@ -341,7 +344,6 @@ namespace GraphicalProgrammingEnvironment
                         }
                     }
                 }
-
             }
             catch (IOException)
             {
