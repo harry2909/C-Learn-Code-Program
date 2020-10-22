@@ -137,8 +137,15 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-                _myCanvas.MoveTo(int.Parse(_commandList[1]),
-                    int.Parse(_commandList[2]));
+                if (_commandList.Length > 3)
+                {
+                    MessageBox.Show(@"Too many parameters.");
+                }
+                else
+                {
+                    _myCanvas.MoveTo(int.Parse(_commandList[1]),
+                        int.Parse(_commandList[2]));
+                }
             }
             catch (IndexOutOfRangeException) // catch if no number has been entered after command
             {
@@ -150,9 +157,16 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-                _myCanvas.DrawLine(int.Parse(_commandList[1]),
-                    int.Parse(_commandList[2])); // use the index to determine values for shape
-                commandLine.Text = (@"Line has been drawn");
+                if (_commandList.Length > 3)
+                {
+                    MessageBox.Show(@"Too many parameters.");
+                }
+                else
+                {
+                    _myCanvas.DrawLine(int.Parse(_commandList[1]),
+                        int.Parse(_commandList[2])); // use the index to determine values for shape
+                    commandLine.Text = (@"Line has been drawn");
+                }
             }
             catch (IndexOutOfRangeException)
             {
@@ -164,8 +178,15 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-                _myCanvas.DrawSquare(int.Parse(_commandList[1]));
-                commandLine.Text = (@"Square has been drawn");
+                if (_commandList.Length > 2)
+                {
+                    MessageBox.Show(@"Too many parameters.");
+                }
+                else
+                {
+                    _myCanvas.DrawSquare(int.Parse(_commandList[1]));
+                    commandLine.Text = (@"Square has been drawn");
+                }
             }
             catch (IndexOutOfRangeException)
             {
@@ -175,16 +196,23 @@ namespace GraphicalProgrammingEnvironment
 
         private void DrawRectangle()
         {
-            // try
-            // {
-            _myCanvas.DrawRectangle(int.Parse(_commandList[1]),
-                int.Parse(_commandList[2]));
-            commandLine.Text = (@"Rectangle has been drawn");
-
-            // catch (IndexOutOfRangeException)
-            // {
-            //     MessageBox.Show(@"Must enter 2 numbers after command.");
-            // }
+            try
+            {
+                if (_commandList.Length > 3)
+                {
+                    MessageBox.Show(@"Too many parameters.");
+                }
+                else
+                {
+                    _myCanvas.DrawRectangle(int.Parse(_commandList[1]),
+                        int.Parse(_commandList[2]));
+                    commandLine.Text = (@"Rectangle has been drawn");
+                }
+            }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show(@"Must enter 2 numbers after command.");
+            }
         }
 
 
@@ -192,8 +220,15 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
-                _myCanvas.DrawCircle(int.Parse(_commandList[1]));
-                commandLine.Text = @"Circle has been drawn.";
+                if (_commandList.Length > 2)
+                {
+                    MessageBox.Show(@"Too many parameters.");
+                }
+                else
+                {
+                    _myCanvas.DrawCircle(int.Parse(_commandList[1]));
+                    commandLine.Text = @"Circle has been drawn.";
+                }
             }
             catch (IndexOutOfRangeException)
             {
@@ -205,16 +240,14 @@ namespace GraphicalProgrammingEnvironment
         {
             try
             {
+                if (_commandList.Length > 5)
                 {
-                    if (_commandList.Length > 5)
-                    {
-                        MessageBox.Show(@"Too many parameters.");
-                    }
-                    else
-                    {
-                        _myCanvas.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
-                            int.Parse(_commandList[3]), int.Parse(_commandList[4]));
-                    }
+                    MessageBox.Show(@"Too many parameters.");
+                }
+                else
+                {
+                    _myCanvas.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
+                        int.Parse(_commandList[3]), int.Parse(_commandList[4]));
                 }
             }
             catch (IndexOutOfRangeException)
