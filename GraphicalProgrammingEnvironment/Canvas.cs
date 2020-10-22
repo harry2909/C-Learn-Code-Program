@@ -57,7 +57,7 @@ namespace GraphicalProgrammingEnvironment
             {
                 if (fill == true)
                 {
-                    _myGraph.FillRectangle(brush, _xPos, _yPos,_xPos + width, _yPos + width);
+                    _myGraph.FillRectangle(brush, _xPos, _yPos, _xPos + width, _yPos + width);
                 }
             }
         }
@@ -65,8 +65,8 @@ namespace GraphicalProgrammingEnvironment
         public void DrawRectangle(int width, int height)
         {
             _myGraph.DrawRectangle(_myPen, _xPos, _yPos, _xPos + width, _yPos + height);
-            
-            
+
+
             using (var brush = new SolidBrush(_myPen.Color))
             {
                 if (fill == true)
@@ -114,7 +114,7 @@ namespace GraphicalProgrammingEnvironment
             pnt[2].Y = (float) (y + distance * Math.Sin(angle + Math.PI / 3));
 
             _myGraph.DrawPolygon(_myPen, pnt);
-            
+
             using (var brush = new SolidBrush(_myPen.Color))
             {
                 if (fill == true)
@@ -167,7 +167,6 @@ namespace GraphicalProgrammingEnvironment
             {
                 fill = false;
             }
-
         }
     }
 }

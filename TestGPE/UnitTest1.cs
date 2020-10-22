@@ -13,9 +13,9 @@ namespace TestGPE
     [TestClass]
     public class UnitTest1
     {
-        Canvas _canvas = new Canvas(); // call new instance of canvas
+        private Canvas _canvas = new Canvas(); // call new instance of canvas
 
-        Bitmap OutputBitMap = new Bitmap(840, 680); // set up new bitmap
+        private readonly Bitmap _outputBitMap = new Bitmap(840, 680); // set up new bitmap
 
         /// <summary>
         /// Testing the initialisation of canvas with bitmap
@@ -23,7 +23,7 @@ namespace TestGPE
         [TestInitialize]
         public void Initialize()
         {
-            _canvas = new Canvas(Graphics.FromImage(OutputBitMap));
+            _canvas = new Canvas(Graphics.FromImage(_outputBitMap));
         }
 
         /// <summary>
@@ -32,13 +32,12 @@ namespace TestGPE
         [TestMethod]
         public void CallDrawMethodWithCommand()
         {
-            String[] commandList;
-            String list = "drawline 20 40";
-            String command = list.Trim().ToLower();
-            commandList = command.Split(" ");
+            const string list = "drawline 20 40";
+            var command = list.Trim().ToLower();
+            var commandList = command.Split(" ");
             Assert.IsTrue(commandList[0].Equals("drawline"));
-            Assert.IsTrue(Int32.Parse(commandList[1]).Equals(20));
-            Assert.IsTrue(Int32.Parse(commandList[2]).Equals(40));
+            Assert.IsTrue(int.Parse(commandList[1]).Equals(20));
+            Assert.IsTrue(int.Parse(commandList[2]).Equals(40));
         }
 
         /// <summary>
@@ -47,17 +46,16 @@ namespace TestGPE
         [TestMethod]
         public void TestPenCoordiantes()
         {
-            String[] commandList;
-            String list = "drawline 20 40";
-            String command = list.Trim().ToLower();
-            commandList = command.Split(" ");
-            int xPos = 280;
-            int yPos = 280;
+            const string list = "drawline 20 40";
+            var command = list.Trim().ToLower();
+            var commandList = command.Split(" ");
+            const int xPos = 280;
+            const int yPos = 280;
             if (commandList[0].Equals("drawline"))
             {
-                _canvas.MoveTo(Int32.Parse(commandList[1]), Int32.Parse(commandList[2]));
-                Assert.IsTrue(Int32.Parse(commandList[1]) < xPos);
-                Assert.IsTrue(Int32.Parse(commandList[2]) < yPos);
+                _canvas.MoveTo(int.Parse(commandList[1]), int.Parse(commandList[2]));
+                Assert.IsTrue(int.Parse(commandList[1]) < xPos);
+                Assert.IsTrue(int.Parse(commandList[2]) < yPos);
             }
         }
 
@@ -67,18 +65,17 @@ namespace TestGPE
         [TestMethod]
         public void CommandLineCoordinates()
         {
-            String[] commandList;
-            String list = "drawline 20 40";
-            String command = list.Trim().ToLower();
-            commandList = command.Split(" ");
-            int toX = 0;
-            int toY = 0;
+            const string list = "drawline 20 40";
+            var command = list.Trim().ToLower();
+            var commandList = command.Split(" ");
+            const int toX = 0;
+            const int toY = 0;
             if (commandList[0].Equals("drawline"))
 
             {
-                _canvas.MoveTo(Int32.Parse(commandList[1]), Int32.Parse(commandList[2]));
-                Assert.IsTrue(Int32.Parse(commandList[1]) > toX);
-                Assert.IsTrue(Int32.Parse(commandList[2]) > toY);
+                _canvas.MoveTo(int.Parse(commandList[1]), int.Parse(commandList[2]));
+                Assert.IsTrue(int.Parse(commandList[1]) > toX);
+                Assert.IsTrue(int.Parse(commandList[2]) > toY);
             }
         }
 
@@ -88,15 +85,14 @@ namespace TestGPE
         [TestMethod]
         public void ExceptionTest()
         {
-            String[] commandList;
-            String list = "line";
-            String command = list.Trim().ToLower();
-            commandList = command.Split(" ");
+            const string list = "line";
+            var command = list.Trim().ToLower();
+            var commandList = command.Split(" ");
             try
             {
                 if (commandList[0].Contains("line"))
                 {
-                    _canvas.DrawLine(Int32.Parse(commandList[1]), Int32.Parse(commandList[2]));
+                    _canvas.DrawLine(int.Parse(commandList[1]), int.Parse(commandList[2]));
                 }
             }
             catch (IndexOutOfRangeException)
@@ -111,17 +107,16 @@ namespace TestGPE
         [TestMethod]
         public void TestPenReset()
         {
-            String[] commandList;
-            String list = "drawline 0 0";
-            String command = list.Trim().ToLower();
-            commandList = command.Split(" ");
-            int toX = 90;
-            int toY = 90;
+            const string list = "drawline 0 0";
+            var command = list.Trim().ToLower();
+            var commandList = command.Split(" ");
+            const int toX = 90;
+            const int toY = 90;
             if (commandList[0].Equals("drawline"))
             {
-                _canvas.ResetPen(Int32.Parse(commandList[1]), Int32.Parse(commandList[2]));
-                Assert.IsTrue(Int32.Parse(commandList[1]) < toX);
-                Assert.IsTrue(Int32.Parse(commandList[2]) < toY);
+                _canvas.ResetPen(int.Parse(commandList[1]), int.Parse(commandList[2]));
+                Assert.IsTrue(int.Parse(commandList[1]) < toX);
+                Assert.IsTrue(int.Parse(commandList[2]) < toY);
             }
         }
 
@@ -131,7 +126,7 @@ namespace TestGPE
         [TestMethod]
         public void TestPenColour()
         {
-            ComboBox penBox = new ComboBox();
+            var penBox = new ComboBox();
             penBox.Items.Insert(0, "Blue");
             penBox.Items.Insert(1, "Red");
             penBox.Items.Insert(2, "Green");
