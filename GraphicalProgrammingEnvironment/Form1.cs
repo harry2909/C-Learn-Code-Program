@@ -293,6 +293,11 @@ namespace GraphicalProgrammingEnvironment
         }
 
 
+        /// <summary>
+        /// Create a method that opens up a save file dialogue and writes to that file using filestream
+        /// </summary>
+        /// <param name="sender">The object that will trigger event</param>
+        /// <param name="e">Key event data</param>
         private void saveButton_Click(object sender, EventArgs e)
         {
             try
@@ -322,6 +327,11 @@ namespace GraphicalProgrammingEnvironment
         }
 
 
+        /// <summary>
+        /// Create method to load in a file using openfiledialogue and then use a stream reader to display in textbox
+        /// </summary>
+        /// <param name="sender">The object that will trigger event</param>
+        /// <param name="e">Key event data</param>
         private void loadButton_Click(object sender, EventArgs e)
         {
             try
