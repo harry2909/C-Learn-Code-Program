@@ -25,9 +25,7 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         private string[] _commandList;
 
-        private bool _check;
-
-        public string command;
+        private string command;
 
         public Form1()
         {
@@ -49,15 +47,15 @@ namespace GraphicalProgrammingEnvironment
                 {
                     try
                     {
-                        command = programArea.Text.Trim().ToLower();
-                        _commandList = command.Split(" ");
-                        int lineCount = 0;
-                        using (StringReader programRead = new StringReader(_commandList.ToString()))
+                        //_commandList = command.Split(" ");
+                        //int lineCount = 0;
+                        String line;
+                        using (StringReader programRead = new StringReader(programArea.Text))
                         {
-                            while (programRead.ReadLine() != null)
+                            while ((line = programRead.ReadLine()) != null)
                             {
-                                _commandList = command.Split(" ");
-                                lineCount++;
+                                _commandList = line.Split(" ");
+                                //lineCount++;
                                 ProcessCommands();
                             }
                         }
@@ -78,7 +76,6 @@ namespace GraphicalProgrammingEnvironment
                         command = commandLine.Text.Trim().ToLower();
                         _commandList = command.Split(" ");
                         ProcessCommands();
-                        programArea.Text = "";
                     }
                     catch (Exception)
                     {
@@ -109,85 +106,64 @@ namespace GraphicalProgrammingEnvironment
                 GetPenColour();
             }
 
-            // split after trim and store in array with space delimiter
-            
-            //_commandList = command.Split(" ");
-
             if (_commandList[0].Equals("moveto")) // if match, call method
             {
                 MoveTo();
-                _check = true;
             }
             else if (_commandList[0].Equals("drawline"))
             {
                 DrawLine();
-                _check = true;
             }
             else if (_commandList[0].Equals("square"))
             {
                 DrawSquare();
-                _check = true;
             }
             else if (_commandList[0].Equals("rectangle"))
             {
                 DrawRectangle();
-                _check = true;
             }
             else if (_commandList[0].Equals("circle"))
             {
                 DrawCircle();
-                _check = true;
             }
             else if (_commandList[0].Equals("fill"))
             {
                 _myCanvas.CheckFill(true);
-                _check = true;
             }
             else if (_commandList[0].Equals("filloff"))
             {
                 _myCanvas.CheckFill(false);
-                _check = true;
             }
             else if (_commandList[0].Equals("triangle"))
             {
                 DrawTriangle();
-                _check = true;
             }
             else if (_commandList[0].Equals("pencolour"))
             {
                 _myCanvas.PenColourSet(_commandList[1]);
-                _check = true;
             }
             else if (_commandList[0].Equals("reset"))
             {
                 ResetPen();
-                _check = true;
             }
             else if (_commandList[0].Equals("clear"))
             {
                 ClearImage();
                 drawBox.Refresh();
-                _check = true;
             }
             else if (_commandList[0].Equals("quit"))
             {
                 Application.Exit();
-                _check = true;
             }
-            else if (_commandList[0] != String.Empty)
+            else
             {
-                _check = false;
-            }
-
-            if (_check == false)
-            {
-                throw new Exception();
+                MessageBox.Show("This error indicates check is set to false.");
             }
 
             commandLine.Text = "";
             Refresh();
         }
-        
+
         /// <summary>
         /// Methods to draw shapes based on command input
         /// </summary>
@@ -223,7 +199,7 @@ namespace GraphicalProgrammingEnvironment
                 {
                     _myCanvas.DrawLine(int.Parse(_commandList[1]),
                         int.Parse(_commandList[2])); // use the index to determine values for shape
-                    commandLine.Text = (@"Line has been drawn");
+                    //commandLine.Text = (@"Line has been drawn");
                 }
             }
             catch (IndexOutOfRangeException)
@@ -243,7 +219,7 @@ namespace GraphicalProgrammingEnvironment
                 else
                 {
                     _myCanvas.DrawSquare(int.Parse(_commandList[1]));
-                    commandLine.Text = (@"Square has been drawn");
+                    //commandLine.Text = (@"Square has been drawn");
                 }
             }
             catch (IndexOutOfRangeException)
@@ -264,7 +240,7 @@ namespace GraphicalProgrammingEnvironment
                 {
                     _myCanvas.DrawRectangle(int.Parse(_commandList[1]),
                         int.Parse(_commandList[2]));
-                    commandLine.Text = (@"Rectangle has been drawn");
+                    //commandLine.Text = (@"Rectangle has been drawn");
                 }
             }
             catch (IndexOutOfRangeException)
@@ -285,7 +261,7 @@ namespace GraphicalProgrammingEnvironment
                 else
                 {
                     _myCanvas.DrawCircle(int.Parse(_commandList[1]));
-                    commandLine.Text = @"Circle has been drawn.";
+                    //commandLine.Text = @"Circle has been drawn.";
                 }
             }
             catch (IndexOutOfRangeException)
