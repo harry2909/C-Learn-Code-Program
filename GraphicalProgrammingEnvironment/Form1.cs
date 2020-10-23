@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -23,7 +25,9 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         private string[] _commandList;
 
-        private bool check;
+        private string[] _programList;
+
+        private bool _check;
 
         public Form1()
         {
@@ -41,6 +45,10 @@ namespace GraphicalProgrammingEnvironment
         {
             if (e.KeyCode == Keys.Enter)
             {
+                if (commandLine.Text == @"run")
+                {
+                    LoadProgram();
+                }
                 if (commandLine.Text == @"help")
                 {
                     AllCommands();
@@ -87,70 +95,74 @@ namespace GraphicalProgrammingEnvironment
             if (_commandList[0].Equals("moveto")) // if match, call method
             {
                 MoveTo();
-                check = true;
+                _check = true;
             }
             else if (_commandList[0].Equals("drawline"))
             {
                 DrawLine();
-                check = true;
+                _check = true;
             }
             else if (_commandList[0].Equals("square"))
             {
                 DrawSquare();
-                check = true;
+                _check = true;
             }
             else if (_commandList[0].Equals("rectangle"))
             {
                 DrawRectangle();
-                check = true;
+                _check = true;
             }
             else if (_commandList[0].Equals("circle"))
             {
                 DrawCircle();
-                check = true;
+                _check = true;
             }
             else if (_commandList[0].Equals("fill"))
             {
                 _myCanvas.CheckFill(true);
-                check = true;
+                _check = true;
             }
             else if (_commandList[0].Equals("filloff"))
             {
                 _myCanvas.CheckFill(false);
-                check = true;
+                _check = true;
             }
             else if (_commandList[0].Equals("triangle"))
             {
                 DrawTriangle();
-                check = true;
+                _check = true;
             }
             else if (_commandList[0].Equals("pencolour"))
             {
                 _myCanvas.PenColourSet(_commandList[1]);
-                check = true;
+                _check = true;
             }
             else if (_commandList[0].Equals("reset"))
             {
                 ResetPen();
-                check = true;
+                _check = true;
             }
             else if (_commandList[0].Equals("clear"))
             {
                 ClearImage();
                 drawBox.Refresh();
-                check = true;
+                _check = true;
             }
             else if (_commandList[0].Equals("quit"))
             {
                 Application.Exit();
-                check = true;
+                _check = true;
+            }
+            else if (_commandList[0].Equals("run"))
+            {
+                //
             }
             else if (_commandList[0] != String.Empty)
             {
-                check = false;
+                _check = false;
             }
 
-            if (check == false)
+            if (_check == false)
             {
                 throw new Exception();
             }
@@ -158,6 +170,22 @@ namespace GraphicalProgrammingEnvironment
             commandLine.Text = "";
             Refresh();
         }
+
+        private void LoadProgram()
+        {
+            try
+            {
+                String program = programArea.Text.Trim().ToLower();
+                _programList = program.Split("\n");
+                
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(@"Program area empty!");
+            }
+
+        }
+        
 
         /// <summary>
         /// Methods to draw shapes based on command input
