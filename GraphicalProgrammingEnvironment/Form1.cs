@@ -23,6 +23,8 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         private string[] _commandList;
 
+        private bool check;
+
         public Form1()
         {
             InitializeComponent();
@@ -45,8 +47,14 @@ namespace GraphicalProgrammingEnvironment
                 }
                 else
                 {
-                    ProcessCommands();
-                    commandLine.Text = "";
+                    try
+                    {
+                        ProcessCommands();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show(@"Command not recognised! Type help to list all commands.");
+                    }
                 }
             }
         }
@@ -79,54 +87,75 @@ namespace GraphicalProgrammingEnvironment
             if (_commandList[0].Equals("moveto")) // if match, call method
             {
                 MoveTo();
+                check = true;
             }
             else if (_commandList[0].Equals("drawline"))
             {
                 DrawLine();
+                check = true;
             }
             else if (_commandList[0].Equals("square"))
             {
                 DrawSquare();
+                check = true;
             }
             else if (_commandList[0].Equals("rectangle"))
             {
                 DrawRectangle();
+                check = true;
             }
             else if (_commandList[0].Equals("circle"))
             {
                 DrawCircle();
+                check = true;
             }
             else if (_commandList[0].Equals("fill"))
             {
                 _myCanvas.CheckFill(true);
+                check = true;
             }
             else if (_commandList[0].Equals("filloff"))
             {
                 _myCanvas.CheckFill(false);
+                check = true;
             }
             else if (_commandList[0].Equals("triangle"))
             {
                 DrawTriangle();
+                check = true;
             }
             else if (_commandList[0].Equals("pencolour"))
             {
                 _myCanvas.PenColourSet(_commandList[1]);
+                check = true;
             }
             else if (_commandList[0].Equals("reset"))
             {
                 ResetPen();
+                check = true;
             }
             else if (_commandList[0].Equals("clear"))
             {
                 ClearImage();
                 drawBox.Refresh();
+                check = true;
             }
             else if (_commandList[0].Equals("quit"))
             {
                 Application.Exit();
+                check = true;
+            }
+            else if (_commandList[0] != String.Empty)
+            {
+                check = false;
             }
 
+            if (check == false)
+            {
+                throw new Exception();
+            }
 
+            commandLine.Text = "";
             Refresh();
         }
 
