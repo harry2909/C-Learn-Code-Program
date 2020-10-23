@@ -25,9 +25,9 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         private string[] _commandList;
 
-        private string[] _programList;
-
         private bool _check;
+
+        public string command;
 
         public Form1()
         {
@@ -47,9 +47,27 @@ namespace GraphicalProgrammingEnvironment
             {
                 if (commandLine.Text == @"run")
                 {
-                    LoadProgram();
+                    try
+                    {
+                        command = programArea.Text.Trim().ToLower();
+                        _commandList = command.Split(" ");
+                        int lineCount = 0;
+                        using (StringReader programRead = new StringReader(_commandList.ToString()))
+                        {
+                            while (programRead.ReadLine() != null)
+                            {
+                                _commandList = command.Split(" ");
+                                lineCount++;
+                                ProcessCommands();
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show(@"Input box empty");
+                    }
                 }
-                if (commandLine.Text == @"help")
+                else if (commandLine.Text == @"help")
                 {
                     AllCommands();
                 }
@@ -57,7 +75,10 @@ namespace GraphicalProgrammingEnvironment
                 {
                     try
                     {
+                        command = commandLine.Text.Trim().ToLower();
+                        _commandList = command.Split(" ");
                         ProcessCommands();
+                        programArea.Text = "";
                     }
                     catch (Exception)
                     {
@@ -89,8 +110,8 @@ namespace GraphicalProgrammingEnvironment
             }
 
             // split after trim and store in array with space delimiter
-            String command = commandLine.Text.Trim().ToLower();
-            _commandList = command.Split(" ");
+            
+            //_commandList = command.Split(" ");
 
             if (_commandList[0].Equals("moveto")) // if match, call method
             {
@@ -153,10 +174,6 @@ namespace GraphicalProgrammingEnvironment
                 Application.Exit();
                 _check = true;
             }
-            else if (_commandList[0].Equals("run"))
-            {
-                //
-            }
             else if (_commandList[0] != String.Empty)
             {
                 _check = false;
@@ -170,23 +187,7 @@ namespace GraphicalProgrammingEnvironment
             commandLine.Text = "";
             Refresh();
         }
-
-        private void LoadProgram()
-        {
-            try
-            {
-                String program = programArea.Text.Trim().ToLower();
-                _programList = program.Split("\n");
-                
-            }
-            catch (Exception)
-            {
-                MessageBox.Show(@"Program area empty!");
-            }
-
-        }
         
-
         /// <summary>
         /// Methods to draw shapes based on command input
         /// </summary>
