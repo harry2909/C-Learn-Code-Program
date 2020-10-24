@@ -45,17 +45,7 @@ namespace GraphicalProgrammingEnvironment
         /// <param name="toY">y position to draw to</param>
         
         
-        public void DrawRectangle(int width, int height)
-        {
-            _myGraph.DrawRectangle(_myPen, _xPos, _yPos, _xPos + width, _yPos + height);
-
-
-            using var brush = new SolidBrush(_myPen.Color);
-            if (_fill)
-            {
-                _myGraph.FillRectangle(brush, _xPos, _yPos, _xPos + width, _yPos + height);
-            }
-        }
+       
 
         
 

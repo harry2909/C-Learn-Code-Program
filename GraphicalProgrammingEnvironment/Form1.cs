@@ -28,6 +28,8 @@ namespace GraphicalProgrammingEnvironment
 
         private Fill fillShape;
 
+        private Rectangle rectangleDraw;
+
 
         /// <summary>
         /// Array to hold list of commands
@@ -44,6 +46,8 @@ namespace GraphicalProgrammingEnvironment
             squareDraw = new Square(Graphics.FromImage(_outputBitMap));
             lineDraw = new LineDrawClass(Graphics.FromImage(_outputBitMap));
             fillShape = new Fill();
+            rectangleDraw = new Rectangle(Graphics.FromImage(_outputBitMap));
+            
             PenColour();
         }
 
@@ -164,7 +168,23 @@ namespace GraphicalProgrammingEnvironment
             }
             else if (_commandList[0].Equals("rectangle"))
             {
-                DrawRectangle();
+                try
+                {
+                    if (_commandList.Length > 3)
+                    {
+                        MessageBox.Show(@"Too many parameters.");
+                    }
+                    else
+                    {
+                        rectangleDraw.DrawRectangle(int.Parse(_commandList[1]),
+                            int.Parse(_commandList[2]));
+                        //commandLine.Text = (@"Rectangle has been drawn");
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    MessageBox.Show(@"Must enter 2 numbers after command.");
+                }
             }
             else if (_commandList[0].Equals("circle"))
             {
@@ -216,7 +236,7 @@ namespace GraphicalProgrammingEnvironment
             }
             else
             {
-                MessageBox.Show("This error indicates check is set to false.");
+                MessageBox.Show(@"Command not recognised!.");
             }
 
             commandLine.Text = "";
@@ -241,27 +261,6 @@ namespace GraphicalProgrammingEnvironment
                 }
             }
             catch (IndexOutOfRangeException) // catch if no number has been entered after command
-            {
-                MessageBox.Show(@"Must enter 2 numbers after command.");
-            }
-        }
-
-        private void DrawRectangle()
-        {
-            try
-            {
-                if (_commandList.Length > 3)
-                {
-                    MessageBox.Show(@"Too many parameters.");
-                }
-                else
-                {
-                    _myCanvas.DrawRectangle(int.Parse(_commandList[1]),
-                        int.Parse(_commandList[2]));
-                    //commandLine.Text = (@"Rectangle has been drawn");
-                }
-            }
-            catch (IndexOutOfRangeException)
             {
                 MessageBox.Show(@"Must enter 2 numbers after command.");
             }
