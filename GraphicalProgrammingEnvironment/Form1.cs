@@ -21,6 +21,8 @@ namespace GraphicalProgrammingEnvironment
         private readonly Canvas _myCanvas;
 
         private Circle circleDraw;
+        
+        
 
         /// <summary>
         /// Array to hold list of commands
@@ -158,7 +160,7 @@ namespace GraphicalProgrammingEnvironment
             }
             else if (_commandList[0].Equals("pencolour"))
             {
-                _myCanvas.PenColourSet(_commandList[1]);
+                PenColourClass.PenColourSet(_commandList[1]);
             }
             else if (_commandList[0].Equals("reset"))
             {
@@ -315,23 +317,23 @@ namespace GraphicalProgrammingEnvironment
             switch (penBox.SelectedIndex)
             {
                 case 0:
-                    _myCanvas.PenColourSet("blue");
+                    PenColourClass.PenColourSet("blue");
                     break;
 
                 case 1:
-                    _myCanvas.PenColourSet("red");
+                    PenColourClass.PenColourSet("red");
                     break;
 
                 case 2:
-                    _myCanvas.PenColourSet("green");
+                    PenColourClass.PenColourSet("green");
                     break;
 
                 case 3:
-                    _myCanvas.PenColourSet("orange");
+                    PenColourClass.PenColourSet("orange");
                     break;
 
                 case 4:
-                    _myCanvas.PenColourSet("yellow");
+                    PenColourClass.PenColourSet("yellow");
                     break;
             }
         }

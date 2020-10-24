@@ -108,39 +108,6 @@ namespace GraphicalProgrammingEnvironment
             }
         }
 
-        public void PenColourSet(String penColour)
-        {
-            Pen[] pensArray = new[]
-            {
-                _myPen = new Pen(Color.Blue),
-                _myPen = new Pen(Color.Red),
-                _myPen = new Pen(Color.Green),
-                _myPen = new Pen(Color.Orange),
-                _myPen = new Pen(Color.Yellow),
-            };
-
-            if (penColour.Contains("blue"))
-            {
-                Canvas._myPen = pensArray[0];
-            }
-            else if (penColour.Contains("red"))
-            {
-                Canvas._myPen = pensArray[1];
-            }
-            else if (penColour.Contains("green"))
-            {
-                Canvas._myPen = pensArray[2];
-            }
-            else if (penColour.Contains("orange"))
-            {
-                Canvas._myPen = pensArray[3];
-            }
-            else if (penColour.Contains("yellow"))
-            {
-                Canvas._myPen = pensArray[4];
-            }
-        }
-
        
 
         public void CheckFill(bool check)
