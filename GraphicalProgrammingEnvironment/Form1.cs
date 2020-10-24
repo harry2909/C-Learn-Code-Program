@@ -21,6 +21,8 @@ namespace GraphicalProgrammingEnvironment
         private readonly Canvas _myCanvas;
 
         private Circle circleDraw;
+
+        private Square squareDraw;
         
         
 
@@ -36,6 +38,7 @@ namespace GraphicalProgrammingEnvironment
             InitializeComponent();
             _myCanvas = new Canvas(Graphics.FromImage(_outputBitMap)); // class for handling drawing
             circleDraw = new Circle(Graphics.FromImage(_outputBitMap));
+            squareDraw = new Square(Graphics.FromImage(_outputBitMap));
             PenColour();
         }
 
@@ -121,7 +124,22 @@ namespace GraphicalProgrammingEnvironment
             }
             else if (_commandList[0].Equals("square"))
             {
-                DrawSquare();
+                try
+                {
+                    if (_commandList.Length > 2)
+                    {
+                        MessageBox.Show(@"Too many parameters.");
+                    }
+                    else
+                    {
+                        squareDraw.DrawSquare(int.Parse(_commandList[1]));
+                        //commandLine.Text = (@"Square has been drawn");
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    MessageBox.Show(@"Must enter a number after command.");
+                }
             }
             else if (_commandList[0].Equals("rectangle"))
             {
@@ -227,27 +245,7 @@ namespace GraphicalProgrammingEnvironment
                 MessageBox.Show(@"Must enter 2 numbers after command.");
             }
         }
-
-        private void DrawSquare()
-        {
-            try
-            {
-                if (_commandList.Length > 2)
-                {
-                    MessageBox.Show(@"Too many parameters.");
-                }
-                else
-                {
-                    _myCanvas.DrawSquare(int.Parse(_commandList[1]));
-                    //commandLine.Text = (@"Square has been drawn");
-                }
-            }
-            catch (IndexOutOfRangeException)
-            {
-                MessageBox.Show(@"Must enter a number after command.");
-            }
-        }
-
+        
         private void DrawRectangle()
         {
             try

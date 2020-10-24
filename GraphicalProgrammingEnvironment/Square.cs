@@ -2,26 +2,26 @@
 
 namespace GraphicalProgrammingEnvironment
 {
-    public class Circle
+    public class Square
     {
         private Graphics _myGraph;
 
         private int xPos, yPos;
 
-        public Circle(Graphics myGraph)
+        public Square(Graphics myGraph)
         {
             this._myGraph = myGraph; // this is referring to instance data
             xPos = yPos = 0;
             //a._myPen = new Pen(Color.Black, 1); // create a standard pen
         }
 
-        public void DrawCircle(float radius)
+        public void DrawSquare(int width)
         {
-            _myGraph.DrawEllipse(PenColourClass._myPen, xPos, yPos, radius + radius, radius + radius);
+            _myGraph.DrawRectangle(PenColourClass._myPen, xPos, yPos, xPos + width, yPos + width);
             using var brush = new SolidBrush(PenColourClass._myPen.Color);
-            // if (a._fill)
+            // if (_fill)
             // {
-            //     _myGraph.FillEllipse(brush, xPos, yPos, radius + radius, radius + radius);
+            //     _myGraph.FillRectangle(brush, _xPos, _yPos, _xPos + width, _yPos + width);
             // }
         }
     }
