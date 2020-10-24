@@ -43,12 +43,7 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         /// <param name="toX">x position to draw to</param>
         /// <param name="toY">y position to draw to</param>
-        public void DrawLine(int toX, int toY)
-        {
-            _myGraph.DrawLine(_myPen, _xPos, _yPos, toX, toY);
-            _xPos = toX; // current x position is updated to where the lined is drawn to
-            _yPos = toY; // current y position is updated to where the lined is drawn to
-        }
+        
         
         public void DrawRectangle(int width, int height)
         {

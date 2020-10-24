@@ -23,8 +23,9 @@ namespace GraphicalProgrammingEnvironment
         private Circle circleDraw;
 
         private Square squareDraw;
-        
-        
+
+        private LineDrawClass lineDraw;
+
 
         /// <summary>
         /// Array to hold list of commands
@@ -39,6 +40,7 @@ namespace GraphicalProgrammingEnvironment
             _myCanvas = new Canvas(Graphics.FromImage(_outputBitMap)); // class for handling drawing
             circleDraw = new Circle(Graphics.FromImage(_outputBitMap));
             squareDraw = new Square(Graphics.FromImage(_outputBitMap));
+            lineDraw = new LineDrawClass(Graphics.FromImage(_outputBitMap));
             PenColour();
         }
 
@@ -81,15 +83,15 @@ namespace GraphicalProgrammingEnvironment
                 {
                     // try
                     // {
-                        command = commandLine.Text.Trim().ToLower();
-                        _commandList = command.Split(" ");
-                        ProcessCommands();
-                    }
-                    // catch (Exception)
-                    // {
-                    //     MessageBox.Show(@"Command not recognised! Type help to list all commands.");
-                    // }
-                
+                    command = commandLine.Text.Trim().ToLower();
+                    _commandList = command.Split(" ");
+                    ProcessCommands();
+                }
+
+                // catch (Exception)
+                // {
+                //     MessageBox.Show(@"Command not recognised! Type help to list all commands.");
+                // }
             }
         }
 
@@ -120,7 +122,23 @@ namespace GraphicalProgrammingEnvironment
             }
             else if (_commandList[0].Equals("drawline"))
             {
-                DrawLine();
+                try
+                {
+                    if (_commandList.Length > 3)
+                    {
+                        MessageBox.Show(@"Too many parameters.");
+                    }
+                    else
+                    {
+                        lineDraw.DrawLine(int.Parse(_commandList[1]),
+                            int.Parse(_commandList[2])); // use the index to determine values for shape
+                        //commandLine.Text = (@"Line has been drawn");
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    MessageBox.Show(@"Must enter 2 numbers after command.");
+                }
             }
             else if (_commandList[0].Equals("square"))
             {
@@ -225,27 +243,6 @@ namespace GraphicalProgrammingEnvironment
             }
         }
 
-        private void DrawLine()
-        {
-            try
-            {
-                if (_commandList.Length > 3)
-                {
-                    MessageBox.Show(@"Too many parameters.");
-                }
-                else
-                {
-                    _myCanvas.DrawLine(int.Parse(_commandList[1]),
-                        int.Parse(_commandList[2])); // use the index to determine values for shape
-                    //commandLine.Text = (@"Line has been drawn");
-                }
-            }
-            catch (IndexOutOfRangeException)
-            {
-                MessageBox.Show(@"Must enter 2 numbers after command.");
-            }
-        }
-        
         private void DrawRectangle()
         {
             try
