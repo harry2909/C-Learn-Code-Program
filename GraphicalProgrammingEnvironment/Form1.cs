@@ -20,6 +20,8 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         private readonly Canvas _myCanvas;
 
+        private Circle circleDraw;
+
         /// <summary>
         /// Array to hold list of commands
         /// </summary>
@@ -31,6 +33,7 @@ namespace GraphicalProgrammingEnvironment
         {
             InitializeComponent();
             _myCanvas = new Canvas(Graphics.FromImage(_outputBitMap)); // class for handling drawing
+            circleDraw = new Circle(Graphics.FromImage(_outputBitMap));
             PenColour();
         }
 
@@ -71,17 +74,17 @@ namespace GraphicalProgrammingEnvironment
                 }
                 else
                 {
-                    try
-                    {
+                    // try
+                    // {
                         command = commandLine.Text.Trim().ToLower();
                         _commandList = command.Split(" ");
                         ProcessCommands();
                     }
-                    catch (Exception)
-                    {
-                        MessageBox.Show(@"Command not recognised! Type help to list all commands.");
-                    }
-                }
+                    // catch (Exception)
+                    // {
+                    //     MessageBox.Show(@"Command not recognised! Type help to list all commands.");
+                    // }
+                
             }
         }
 
@@ -124,7 +127,22 @@ namespace GraphicalProgrammingEnvironment
             }
             else if (_commandList[0].Equals("circle"))
             {
-                DrawCircle();
+                try
+                {
+                    if (_commandList.Length > 2)
+                    {
+                        MessageBox.Show(@"Too many parameters.");
+                    }
+                    else
+                    {
+                        circleDraw.DrawCircle(int.Parse(_commandList[1]));
+                        //commandLine.Text = @"Circle has been drawn.";
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    MessageBox.Show(@"Must enter a number after command.");
+                }
             }
             else if (_commandList[0].Equals("fill"))
             {
@@ -246,27 +264,6 @@ namespace GraphicalProgrammingEnvironment
             catch (IndexOutOfRangeException)
             {
                 MessageBox.Show(@"Must enter 2 numbers after command.");
-            }
-        }
-
-
-        private void DrawCircle()
-        {
-            try
-            {
-                if (_commandList.Length > 2)
-                {
-                    MessageBox.Show(@"Too many parameters.");
-                }
-                else
-                {
-                    _myCanvas.DrawCircle(int.Parse(_commandList[1]));
-                    //commandLine.Text = @"Circle has been drawn.";
-                }
-            }
-            catch (IndexOutOfRangeException)
-            {
-                MessageBox.Show(@"Must enter a number after command.");
             }
         }
 

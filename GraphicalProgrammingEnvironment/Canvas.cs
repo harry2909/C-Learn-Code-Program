@@ -9,16 +9,16 @@ namespace GraphicalProgrammingEnvironment
     /// </summary>
     public class Canvas
     {
-        private bool _fill;
+        public bool _fill;
 
         // instance data for pen, position and graphics
         // the graphics context is the area of the form to draw on
-        private readonly Graphics _myGraph;
+        public Graphics _myGraph;
 
-        private Pen _myPen;
+        public static Pen _myPen;
 
         // the position of the pen when drawing
-        private int _xPos, _yPos;
+        public int _xPos, _yPos;
 
         /// <summary>
         /// Constructor initialises canvas.
@@ -30,7 +30,7 @@ namespace GraphicalProgrammingEnvironment
             _xPos = _yPos = 0;
             _myPen = new Pen(Color.Black, 1); // create a standard pen
         }
-
+        
         /// <summary>
         /// Create new Canvas method to call in testing class
         /// </summary>
@@ -72,15 +72,7 @@ namespace GraphicalProgrammingEnvironment
             }
         }
 
-        public void DrawCircle(float radius)
-        {
-            _myGraph.DrawEllipse(_myPen, _xPos, _yPos, radius + radius, radius + radius);
-            using var brush = new SolidBrush(_myPen.Color);
-            if (_fill)
-            {
-                _myGraph.FillEllipse(brush, _xPos, _yPos, radius + radius, radius + radius);
-            }
-        }
+        
 
         public void MoveTo(int toX, int toY)
         {
@@ -129,25 +121,27 @@ namespace GraphicalProgrammingEnvironment
 
             if (penColour.Contains("blue"))
             {
-                _myPen = pensArray[0];
+                Canvas._myPen = pensArray[0];
             }
             else if (penColour.Contains("red"))
             {
-                _myPen = pensArray[1];
+                Canvas._myPen = pensArray[1];
             }
             else if (penColour.Contains("green"))
             {
-                _myPen = pensArray[2];
+                Canvas._myPen = pensArray[2];
             }
             else if (penColour.Contains("orange"))
             {
-                _myPen = pensArray[3];
+                Canvas._myPen = pensArray[3];
             }
             else if (penColour.Contains("yellow"))
             {
-                _myPen = pensArray[4];
+                Canvas._myPen = pensArray[4];
             }
         }
+
+       
 
         public void CheckFill(bool check)
         {
