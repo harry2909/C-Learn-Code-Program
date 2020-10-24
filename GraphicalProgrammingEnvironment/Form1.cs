@@ -26,6 +26,8 @@ namespace GraphicalProgrammingEnvironment
 
         private LineDrawClass lineDraw;
 
+        private Fill fillShape;
+
 
         /// <summary>
         /// Array to hold list of commands
@@ -41,6 +43,7 @@ namespace GraphicalProgrammingEnvironment
             circleDraw = new Circle(Graphics.FromImage(_outputBitMap));
             squareDraw = new Square(Graphics.FromImage(_outputBitMap));
             lineDraw = new LineDrawClass(Graphics.FromImage(_outputBitMap));
+            fillShape = new Fill();
             PenColour();
         }
 
@@ -184,11 +187,11 @@ namespace GraphicalProgrammingEnvironment
             }
             else if (_commandList[0].Equals("fill"))
             {
-                _myCanvas.CheckFill(true);
+                fillShape.CheckFill(true);
             }
             else if (_commandList[0].Equals("filloff"))
             {
-                _myCanvas.CheckFill(false);
+                fillShape.CheckFill(false);
             }
             else if (_commandList[0].Equals("triangle"))
             {

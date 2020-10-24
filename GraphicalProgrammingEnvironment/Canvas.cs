@@ -92,19 +92,7 @@ namespace GraphicalProgrammingEnvironment
                 _myGraph.FillPolygon(brush, pnt);
             }
         }
+        
 
-       
-
-        public void CheckFill(bool check)
-        {
-            if (check)
-            {
-                _fill = true;
-            }
-            else
-            {
-                _fill = false;
-            }
-        }
     }
 }

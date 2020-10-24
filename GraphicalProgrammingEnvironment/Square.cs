@@ -19,10 +19,10 @@ namespace GraphicalProgrammingEnvironment
         {
             _myGraph.DrawRectangle(PenColourClass._myPen, xPos, yPos, xPos + width, yPos + width);
             using var brush = new SolidBrush(PenColourClass._myPen.Color);
-            // if (_fill)
-            // {
-            //     _myGraph.FillRectangle(brush, _xPos, _yPos, _xPos + width, _yPos + width);
-            // }
+            if (Fill._fill)
+            {
+                _myGraph.FillRectangle(brush, xPos, yPos, xPos + width, yPos + width);
+            }
         }
     }
 }

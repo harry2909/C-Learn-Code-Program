@@ -19,10 +19,10 @@ namespace GraphicalProgrammingEnvironment
         {
             _myGraph.DrawEllipse(PenColourClass._myPen, xPos, yPos, radius + radius, radius + radius);
             using var brush = new SolidBrush(PenColourClass._myPen.Color);
-            // if (a._fill)
-            // {
-            //     _myGraph.FillEllipse(brush, xPos, yPos, radius + radius, radius + radius);
-            // }
+            if (Fill._fill)
+            {
+                _myGraph.FillEllipse(brush, xPos, yPos, radius + radius, radius + radius);
+            }
         }
     }
 }
