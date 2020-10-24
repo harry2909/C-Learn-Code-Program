@@ -12,7 +12,7 @@ namespace GraphicalProgrammingEnvironment
         {
             this._myGraph = myGraph; // this is referring to instance data
             xPos = yPos = 0;
-            //a._myPen = new Pen(Color.Black, 1); // create a standard pen
+            PenColourClass._myPen = new Pen(Color.Black, 1); // create a standard pen
         }
 
         public void DrawSquare(int width)
