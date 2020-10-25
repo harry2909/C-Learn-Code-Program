@@ -12,12 +12,7 @@ namespace GraphicalProgrammingEnvironment
         /// Bitmap to draw on which will be displayed in drawBox
         /// </summary>
         private static readonly Bitmap OutputBitMap = new Bitmap(840, 680);
-
-        /// <summary>
-        /// Call an instance of canvas
-        /// </summary>
-        private readonly Canvas _myCanvas;
-
+        
         private readonly Circle _circleDraw;
 
         private readonly Square _squareDraw;
@@ -30,7 +25,6 @@ namespace GraphicalProgrammingEnvironment
 
         private readonly Triangle _triangleDraw;
 
-
         /// <summary>
         /// Array to hold list of commands
         /// </summary>
@@ -41,7 +35,6 @@ namespace GraphicalProgrammingEnvironment
         public Form1()
         {
             InitializeComponent();
-            _myCanvas = new Canvas(Graphics.FromImage(OutputBitMap)); // class for handling drawing
             _circleDraw = new Circle(Graphics.FromImage(OutputBitMap));
             _squareDraw = new Square(Graphics.FromImage(OutputBitMap));
             _lineDraw = new LineDrawClass(Graphics.FromImage(OutputBitMap));
