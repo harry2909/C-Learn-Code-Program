@@ -17,7 +17,11 @@ namespace GraphicalProgrammingEnvironment
         
         public void DrawLine(int toX, int toY)
         {
-            
+            if(Reset._reset)
+            {
+                MoveToClass._xPos = MoveToClass._yPos = 0;
+                Reset._reset = false;
+            }
             _myGraph.DrawLine(PenColourClass.MyPen, MoveToClass._xPos, MoveToClass._yPos, toX, toY);
             _xPos = toX; // current x position is updated to where the lined is drawn to
             _yPos = toY; // current y position is updated to where the lined is drawn to

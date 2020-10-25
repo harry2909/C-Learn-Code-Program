@@ -18,7 +18,11 @@ namespace GraphicalProgrammingEnvironment
         }
         
         public void DrawRectangle(int width, int height)
-        {
+        {if(Reset._reset)
+            {
+                MoveToClass._xPos = MoveToClass._yPos = 0;
+                Reset._reset = false;
+            }
             _myGraph.DrawRectangle(PenColourClass.MyPen, MoveToClass._xPos, MoveToClass._yPos, MoveToClass._xPos + width, MoveToClass._yPos + height);
 
 

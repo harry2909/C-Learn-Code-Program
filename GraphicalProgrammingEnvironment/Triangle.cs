@@ -19,6 +19,12 @@ namespace GraphicalProgrammingEnvironment
 
         public void DrawTriangle(int x, int y, int distance, float angle)
         {
+            if(Reset._reset)
+            {
+                MoveToClass._xPos = MoveToClass._yPos = 0;
+                Reset._reset = false;
+            }
+            
             PointF[] pnt = new PointF[3];
 
             pnt[0].X = x;

@@ -17,7 +17,11 @@ namespace GraphicalProgrammingEnvironment
         }
 
         public void DrawSquare(int width)
-        {
+        {if(Reset._reset)
+            {
+                MoveToClass._xPos = MoveToClass._yPos = 0;
+                Reset._reset = false;
+            }
             _myGraph.DrawRectangle(PenColourClass.MyPen, MoveToClass._xPos, MoveToClass._yPos, MoveToClass._xPos + width, MoveToClass._yPos + width);
             using var brush = new SolidBrush(PenColourClass.MyPen.Color);
             if (Fill._fill)
