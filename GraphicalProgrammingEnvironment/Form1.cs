@@ -12,14 +12,12 @@ namespace GraphicalProgrammingEnvironment
         /// Bitmap to draw on which will be displayed in drawBox
         /// </summary>
         private static readonly Bitmap OutputBitMap = new Bitmap(840, 680);
-        
+
         private readonly Circle _circleDraw;
 
         private readonly Square _squareDraw;
 
         private readonly LineDrawClass _lineDraw;
-
-        private readonly Fill _fillShape;
 
         private readonly Rectangle _rectangleDraw;
 
@@ -38,7 +36,6 @@ namespace GraphicalProgrammingEnvironment
             _circleDraw = new Circle(Graphics.FromImage(OutputBitMap));
             _squareDraw = new Square(Graphics.FromImage(OutputBitMap));
             _lineDraw = new LineDrawClass(Graphics.FromImage(OutputBitMap));
-            _fillShape = new Fill();
             _rectangleDraw = new Rectangle(Graphics.FromImage(OutputBitMap));
             _triangleDraw = new Triangle(Graphics.FromImage(OutputBitMap));
             PenColour();
@@ -53,39 +50,63 @@ namespace GraphicalProgrammingEnvironment
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (commandLine.Text == @"run")
+                switch (commandLine.Text)
                 {
-                    try
-                    {
-                        //_commandList = command.Split(" ");
-                        //int lineCount = 0;
-                        String line;
-                        using (StringReader programRead = new StringReader(programArea.Text))
+                    case @"run":
+                        try
                         {
-                            while ((line = programRead.ReadLine()) != null)
+                            //_commandList = command.Split(" ");
+                            //int lineCount = 0;
+                            String line;
+                            using (StringReader programRead = new StringReader(programArea.Text))
                             {
-                                _commandList = line.Split(" ");
-                                //lineCount++;
-                                ProcessCommands();
+                                while ((line = programRead.ReadLine()) != null)
+                                {
+                                    _commandList = line.Split(" ");
+                                    //lineCount++;
+                                    ProcessCommands();
+                                }
                             }
                         }
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show(@"Input box empty");
-                    }
-                }
-                else if (commandLine.Text == @"help")
-                {
-                    AllCommands();
-                }
-                else
-                {
-                    // try
-                    // {
-                    _command = commandLine.Text.Trim().ToLower();
-                    _commandList = _command.Split(" ");
-                    ProcessCommands();
+                        catch (Exception)
+                        {
+                            MessageBox.Show(@"Input box empty");
+                        }
+
+                        break;
+                    case @"help":
+                        const string a = "\n|moveto" + " " + " 'number 1' " + " " + " 'number 2' " + " " + " => " +
+                                         " " +
+                                         " moves pen position \n|reset" + " " + " => Resets pen position " +
+                                         "\n|drawline" + " " + " 'number 1'" + " " + " " +
+                                         "'number 2'" + " " + " =>" + " " +
+                                         " Draws a line to given position \n|square" + " " +
+                                         " 'number 1'" + " " + " => " + " " + " " +
+                                         "Draws a square with given width \n|rectangle" + " " + "  'number 1'" + " " +
+                                         "  'number 2'" + " " + "  =>" + " " + "  Draws a rectangle" +
+                                         " with given" +
+                                         " width and height \n|circle" + " " + "  =>" + " " +
+                                         "  Draws a circle with given radius  \n|triangle" + " " + "  'number 1'" +
+                                         " " + "  " +
+                                         "'number 2'" + " " + "  " +
+                                         "'number 3'" + " " + "  'number 4'" + " " + "  =>" + " " +
+                                         "  Draws a triangle with given" +
+                                         " 2 points, distance and angle \n|pencolour " + " " + " " +
+                                         "'colour' " + " " + " =>" + " " +
+                                         "  Changes pen colour to those listed in combobox  \n|clear" + " " + "  =>" +
+                                         " " +
+                                         "  Clears " +
+                                         "canvas\n|quit" + " " + "  =>" + " " + "  " +
+                                         "Exits program";
+                        programArea.Text = a;
+                        commandLine.Text = "";
+                        break;
+                    default:
+                        programArea.Text = "";
+                        _command = commandLine.Text.Trim().ToLower();
+                        _commandList = _command.Split(" ");
+                        ProcessCommands();
+                        break;
                 }
 
                 // catch (Exception)
@@ -107,19 +128,37 @@ namespace GraphicalProgrammingEnvironment
         }
 
         /// <summary>
-        /// Method to process all possible commands
+        /// Method to process all possible commands entered along with error handling for empty box and unregistered commands
         /// </summary>
         private void ProcessCommands()
         {
+            // if combo box is selected, get the colour
             if (penBox.SelectedIndex > -1)
             {
                 GetPenColour();
             }
 
-            if (_commandList[0].Equals("moveto")) // if match, call method
+            // move to command
+            if (_commandList[0].Equals("moveto"))
             {
-                MoveTo();
+                try
+                {
+                    if (_commandList.Length > 3)
+                    {
+                        MessageBox.Show(@"Too many parameters.");
+                    }
+                    else
+                    {
+                        MoveToClass.MoveTo(int.Parse(_commandList[1]),
+                            int.Parse(_commandList[2]));
+                    }
+                }
+                catch (IndexOutOfRangeException) // catch if no number has been entered after command
+                {
+                    MessageBox.Show(@"Must enter 2 numbers after command.");
+                }
             }
+            // draw line commands
             else if (_commandList[0].Equals("drawline"))
             {
                 try
@@ -131,8 +170,7 @@ namespace GraphicalProgrammingEnvironment
                     else
                     {
                         _lineDraw.DrawLine(int.Parse(_commandList[1]),
-                            int.Parse(_commandList[2])); // use the index to determine values for shape
-                        //commandLine.Text = (@"Line has been drawn");
+                            int.Parse(_commandList[2]));
                     }
                 }
                 catch (IndexOutOfRangeException)
@@ -140,6 +178,7 @@ namespace GraphicalProgrammingEnvironment
                     MessageBox.Show(@"Must enter 2 numbers after command.");
                 }
             }
+            // draw square command
             else if (_commandList[0].Equals("square"))
             {
                 try
@@ -151,7 +190,6 @@ namespace GraphicalProgrammingEnvironment
                     else
                     {
                         _squareDraw.DrawSquare(int.Parse(_commandList[1]));
-                        //commandLine.Text = (@"Square has been drawn");
                     }
                 }
                 catch (IndexOutOfRangeException)
@@ -159,6 +197,7 @@ namespace GraphicalProgrammingEnvironment
                     MessageBox.Show(@"Must enter a number after command.");
                 }
             }
+            // draw rectangle command
             else if (_commandList[0].Equals("rectangle"))
             {
                 try
@@ -171,7 +210,6 @@ namespace GraphicalProgrammingEnvironment
                     {
                         _rectangleDraw.DrawRectangle(int.Parse(_commandList[1]),
                             int.Parse(_commandList[2]));
-                        //commandLine.Text = (@"Rectangle has been drawn");
                     }
                 }
                 catch (IndexOutOfRangeException)
@@ -179,6 +217,7 @@ namespace GraphicalProgrammingEnvironment
                     MessageBox.Show(@"Must enter 2 numbers after command.");
                 }
             }
+            // draw circle command
             else if (_commandList[0].Equals("circle"))
             {
                 try
@@ -190,7 +229,6 @@ namespace GraphicalProgrammingEnvironment
                     else
                     {
                         _circleDraw.DrawCircle(int.Parse(_commandList[1]));
-                        //commandLine.Text = @"Circle has been drawn.";
                     }
                 }
                 catch (IndexOutOfRangeException)
@@ -198,16 +236,19 @@ namespace GraphicalProgrammingEnvironment
                     MessageBox.Show(@"Must enter a number after command.");
                 }
             }
+            // set fill true command
             else if (_commandList[0].Equals("fill"))
             {
                 Fill.CheckFill(true);
                 fillCheckBox.Checked = true;
             }
+            // set fill false command
             else if (_commandList[0].Equals("filloff"))
             {
                 Fill.CheckFill(false);
                 fillCheckBox.Checked = false;
             }
+            // draw triangle command
             else if (_commandList[0].Equals("triangle"))
             {
                 try
@@ -227,26 +268,36 @@ namespace GraphicalProgrammingEnvironment
                     MessageBox.Show(@"Must enter 4 numbers after command.");
                 }
             }
+            // change pen colour command
             else if (_commandList[0].Equals("pencolour"))
             {
                 PenColourClass.PenColourSet(_commandList[1]);
             }
+            // reset pen position command
             else if (_commandList[0].Equals("reset"))
             {
                 Reset.CheckReset(true);
             }
+            // clear bitmap
             else if (_commandList[0].Equals("clear"))
             {
                 ClearImage();
                 drawBox.Refresh();
             }
+            // leave application
             else if (_commandList[0].Equals("quit"))
             {
                 Application.Exit();
             }
+            // if nothing entered throw message
+            else if (_commandList[0] == String.Empty)
+            {
+                MessageBox.Show(@"No command entered!");
+            }
+            // if no command recognised show error 
             else
             {
-                MessageBox.Show(@"Command not recognised!.");
+                MessageBox.Show(@"Command not recognised!");
             }
 
             commandLine.Text = "";
@@ -254,37 +305,17 @@ namespace GraphicalProgrammingEnvironment
         }
 
         /// <summary>
-        /// Methods to draw shapes based on command input
-        /// </summary>
-        private void MoveTo()
-        {
-            try
-            {
-                if (_commandList.Length > 3)
-                {
-                    MessageBox.Show(@"Too many parameters.");
-                }
-                else
-                {
-                    MoveToClass.MoveTo(int.Parse(_commandList[1]),
-                        int.Parse(_commandList[2]));
-                }
-            }
-            catch (IndexOutOfRangeException) // catch if no number has been entered after command
-            {
-                MessageBox.Show(@"Must enter 2 numbers after command.");
-            }
-        }
-
-        /// <summary>
         /// Method to clear the bitmap on command
         /// </summary>
         private void ClearImage()
         {
-            var myGraphics = Graphics.FromImage(OutputBitMap);
+            Graphics myGraphics = Graphics.FromImage(OutputBitMap);
             myGraphics.Clear(Color.AliceBlue);
         }
 
+        /// <summary>
+        /// Set pen colours into the combobox with respective index value
+        /// </summary>
         private void PenColour()
         {
             penBox.Items.Insert(0, "Blue");
@@ -294,6 +325,9 @@ namespace GraphicalProgrammingEnvironment
             penBox.Items.Insert(4, "Yellow");
         }
 
+        /// <summary>
+        /// Method to get the colour of the pen based on the combobox value
+        /// </summary>
         private void GetPenColour()
         {
             switch (penBox.SelectedIndex)
@@ -319,34 +353,6 @@ namespace GraphicalProgrammingEnvironment
                     break;
             }
         }
-
-        /// <summary>
-        /// Method to list all commands
-        /// </summary>
-        private void AllCommands()
-        {
-            const string a = "\n|moveto" + " " + " 'number 1' " + " " + " 'number 2' " + " " + " => " + " " +
-                             " moves pen position \n|reset" + " " + " => Resets pen position " +
-                             "\n|drawline" + " " + " 'number 1'" + " " + " " +
-                             "'number 2'" + " " + " =>" + " " + " Draws a line to given position \n|square" + " " +
-                             " 'number 1'" + " " + " => " + " " + " " +
-                             "Draws a square with given width \n|rectangle" + " " + "  'number 1'" + " " +
-                             "  'number 2'" + " " + "  =>" + " " + "  Draws a rectangle" +
-                             " with given" +
-                             " width and height \n|circle" + " " + "  =>" + " " +
-                             "  Draws a circle with given radius  \n|triangle" + " " + "  'number 1'" + " " + "  " +
-                             "'number 2'" + " " + "  " +
-                             "'number 3'" + " " + "  'number 4'" + " " + "  =>" + " " +
-                             "  Draws a triangle with given" +
-                             " 2 points, distance and angle \n|pencolour " + " " + " " +
-                             "'colour' " + " " + " =>" + " " +
-                             "  Changes pen colour to those listed in combobox  \n|clear" + " " + "  =>" + " " +
-                             "  Clears " +
-                             "canvas\n|quit" + " " + "  =>" + " " + "  " +
-                             "Exits program";
-            commandLine.Text = a;
-        }
-
 
         /// <summary>
         /// Create a method that opens up a save file dialogue and writes to that file using filestream
@@ -420,7 +426,5 @@ namespace GraphicalProgrammingEnvironment
                 MessageBox.Show(@"No such file to load!");
             }
         }
-
-       
     }
 }
