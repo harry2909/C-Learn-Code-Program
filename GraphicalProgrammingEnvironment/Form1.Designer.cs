@@ -40,6 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.loadButton = new System.Windows.Forms.Button();
+            this.fillCheckBox = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize) (this.drawBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,12 +161,35 @@
             this.loadButton.UseVisualStyleBackColor = true;
             this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
+            // fillCheckBox
+            // 
+            this.fillCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.fillCheckBox.Location = new System.Drawing.Point(245, 440);
+            this.fillCheckBox.Name = "fillCheckBox";
+            this.fillCheckBox.Size = new System.Drawing.Size(34, 21);
+            this.fillCheckBox.TabIndex = 14;
+            this.fillCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(207, 421);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(101, 16);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Fill Status";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(947, 652);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.fillCheckBox);
             this.Controls.Add(this.loadButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.label1);
@@ -181,6 +206,10 @@
             ((System.ComponentModel.ISupportInitialize) (this.drawBox)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.CheckBox fillCheckBox;
+
+        private System.Windows.Forms.Label label2;
 
         private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.Button saveButton;

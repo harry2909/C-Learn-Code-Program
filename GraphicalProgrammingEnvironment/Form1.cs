@@ -208,10 +208,12 @@ namespace GraphicalProgrammingEnvironment
             else if (_commandList[0].Equals("fill"))
             {
                 Fill.CheckFill(true);
+                fillCheckBox.Checked = true;
             }
             else if (_commandList[0].Equals("filloff"))
             {
                 Fill.CheckFill(false);
+                fillCheckBox.Checked = false;
             }
             else if (_commandList[0].Equals("triangle"))
             {
@@ -425,5 +427,7 @@ namespace GraphicalProgrammingEnvironment
                 MessageBox.Show(@"No such file to load!");
             }
         }
+
+       
     }
 }
