@@ -12,9 +12,9 @@ namespace GraphicalProgrammingEnvironment
         private int _xPos, _yPos;
 
         /// <summary>
-        /// Public class to initialise the variables.
+        /// Public method to initialise the variables.
         /// </summary>
-        /// <param name="myGraph">myGraph is equal to the graphics defined above.</param>
+        /// <param name="myGraph">Equal to the graphics defined above. Set to bitmap on form.</param>
         public LineDrawClass(Graphics myGraph)
         {
             this._myGraph = myGraph; // this is referring to instance data

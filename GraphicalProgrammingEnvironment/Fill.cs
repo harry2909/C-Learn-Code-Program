@@ -3,13 +3,13 @@
     /// <summary>
     /// Class to set boolean true or false depending on user input
     /// </summary>
-    public class Fill
+    public static class Fill
     {
         /// <summary>
         /// Define variable
         /// </summary>
         public static bool _fill;
-        
+
         /// <summary>
         /// Method to check if bool is set
         /// </summary>

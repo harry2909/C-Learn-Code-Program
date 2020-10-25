@@ -13,9 +13,9 @@ namespace GraphicalProgrammingEnvironment
         private int _yPos;
 
         /// <summary>
-        /// Create class to initialise variables.
+        /// Method to initialise variables.
         /// </summary>
-        /// <param name="myGraph">myGraph is equal to the graphics defined above.</param>
+        /// <param name="myGraph">Equal to the graphics defined above. Set to bitmap on form.</param>
         public Circle(Graphics myGraph)
         {
             this._myGraph = myGraph; // this is referring to instance data
@@ -37,7 +37,7 @@ namespace GraphicalProgrammingEnvironment
 
             _myGraph.DrawEllipse(PenColourClass.MyPen, MoveToClass._xPos, MoveToClass._yPos, radius + radius,
                 radius + radius);
-            using var brush = new SolidBrush(PenColourClass.MyPen.Color);
+            using Brush brush = new SolidBrush(PenColourClass.MyPen.Color);
             if (Fill._fill) // if fill bool is set to true
             {
                 // draw the shape but with the brush
