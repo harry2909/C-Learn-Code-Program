@@ -5,26 +5,27 @@ namespace GraphicalProgrammingEnvironment
     public class Rectangle
     {
         
-        private Graphics _myGraph;
+        private readonly Graphics _myGraph;
 
-        private int xPos, yPos;
+        private readonly int _xPos;
+        private readonly int _yPos;
 
         public Rectangle(Graphics myGraph)
         {
             this._myGraph = myGraph; // this is referring to instance data
-            xPos = yPos = 0;
-            PenColourClass._myPen = new Pen(Color.Black, 1); // create a standard pen
+            _xPos = _yPos = 0;
+            PenColourClass.MyPen = new Pen(Color.Black, 1); // create a standard pen
         }
         
         public void DrawRectangle(int width, int height)
         {
-            _myGraph.DrawRectangle(PenColourClass._myPen, xPos, yPos, xPos + width, yPos + height);
+            _myGraph.DrawRectangle(PenColourClass.MyPen, MoveToClass._xPos, MoveToClass._yPos, MoveToClass._xPos + width, MoveToClass._yPos + height);
 
 
-            using var brush = new SolidBrush(PenColourClass._myPen.Color);
+            using var brush = new SolidBrush(PenColourClass.MyPen.Color);
             if (Fill._fill)
             {
-                _myGraph.FillRectangle(brush, xPos, yPos, xPos + width, yPos + height);
+                _myGraph.FillRectangle(brush, MoveToClass._xPos, MoveToClass._yPos, MoveToClass._xPos + width, MoveToClass._yPos + height);
             }
         }
     }

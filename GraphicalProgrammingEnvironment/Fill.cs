@@ -4,16 +4,9 @@
     {
         public static bool _fill;
         
-        public void CheckFill(bool check)
+        public static void CheckFill(bool check)
         {
-            if (check)
-            {
-                _fill = true;
-            }
-            else
-            {
-                _fill = false;
-            }
+            _fill = check;
         }
     }
 }

@@ -4,24 +4,25 @@ namespace GraphicalProgrammingEnvironment
 {
     public class Square
     {
-        private Graphics _myGraph;
+        private readonly Graphics _myGraph;
 
-        private int xPos, yPos;
+        private readonly int _xPos;
+        private readonly int _yPos;
 
         public Square(Graphics myGraph)
         {
             this._myGraph = myGraph; // this is referring to instance data
-            xPos = yPos = 0;
-            PenColourClass._myPen = new Pen(Color.Black, 1); // create a standard pen
+            _xPos = _yPos = 0;
+            PenColourClass.MyPen = new Pen(Color.Black, 1); // create a standard pen
         }
 
         public void DrawSquare(int width)
         {
-            _myGraph.DrawRectangle(PenColourClass._myPen, xPos, yPos, xPos + width, yPos + width);
-            using var brush = new SolidBrush(PenColourClass._myPen.Color);
+            _myGraph.DrawRectangle(PenColourClass.MyPen, MoveToClass._xPos, MoveToClass._yPos, MoveToClass._xPos + width, MoveToClass._yPos + width);
+            using var brush = new SolidBrush(PenColourClass.MyPen.Color);
             if (Fill._fill)
             {
-                _myGraph.FillRectangle(brush, xPos, yPos, xPos + width, yPos + width);
+                _myGraph.FillRectangle(brush, MoveToClass._xPos, MoveToClass._yPos, MoveToClass._xPos + width, MoveToClass._yPos + width);
             }
         }
     }

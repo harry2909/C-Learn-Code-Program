@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -13,41 +11,43 @@ namespace GraphicalProgrammingEnvironment
         /// <summary>
         /// Bitmap to draw on which will be displayed in drawBox
         /// </summary>
-        private readonly Bitmap _outputBitMap = new Bitmap(840, 680);
+        private static readonly Bitmap OutputBitMap = new Bitmap(840, 680);
 
         /// <summary>
         /// Call an instance of canvas
         /// </summary>
         private readonly Canvas _myCanvas;
 
-        private Circle circleDraw;
+        private readonly Circle _circleDraw;
 
-        private Square squareDraw;
+        private readonly Square _squareDraw;
 
-        private LineDrawClass lineDraw;
+        private readonly LineDrawClass _lineDraw;
 
-        private Fill fillShape;
+        private readonly Fill _fillShape;
 
-        private Rectangle rectangleDraw;
+        private readonly Rectangle _rectangleDraw;
+
+        private readonly Triangle _triangleDraw;
 
 
         /// <summary>
         /// Array to hold list of commands
         /// </summary>
-        private string[] _commandList;
+        private static string[] _commandList;
 
-        private string command;
+        private string _command;
 
         public Form1()
         {
             InitializeComponent();
-            _myCanvas = new Canvas(Graphics.FromImage(_outputBitMap)); // class for handling drawing
-            circleDraw = new Circle(Graphics.FromImage(_outputBitMap));
-            squareDraw = new Square(Graphics.FromImage(_outputBitMap));
-            lineDraw = new LineDrawClass(Graphics.FromImage(_outputBitMap));
-            fillShape = new Fill();
-            rectangleDraw = new Rectangle(Graphics.FromImage(_outputBitMap));
-            
+            _myCanvas = new Canvas(Graphics.FromImage(OutputBitMap)); // class for handling drawing
+            _circleDraw = new Circle(Graphics.FromImage(OutputBitMap));
+            _squareDraw = new Square(Graphics.FromImage(OutputBitMap));
+            _lineDraw = new LineDrawClass(Graphics.FromImage(OutputBitMap));
+            _fillShape = new Fill();
+            _rectangleDraw = new Rectangle(Graphics.FromImage(OutputBitMap));
+            _triangleDraw = new Triangle(Graphics.FromImage(OutputBitMap));
             PenColour();
         }
 
@@ -90,8 +90,8 @@ namespace GraphicalProgrammingEnvironment
                 {
                     // try
                     // {
-                    command = commandLine.Text.Trim().ToLower();
-                    _commandList = command.Split(" ");
+                    _command = commandLine.Text.Trim().ToLower();
+                    _commandList = _command.Split(" ");
                     ProcessCommands();
                 }
 
@@ -110,7 +110,7 @@ namespace GraphicalProgrammingEnvironment
         private void drawBox_Paint(object sender, PaintEventArgs e)
         {
             Graphics myGraph = e.Graphics; // get graphics context of form
-            myGraph.DrawImageUnscaled(_outputBitMap, 0, 0); // put off screen bitmap on form
+            myGraph.DrawImageUnscaled(OutputBitMap, 0, 0); // put off screen bitmap on form
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace GraphicalProgrammingEnvironment
                     }
                     else
                     {
-                        lineDraw.DrawLine(int.Parse(_commandList[1]),
+                        _lineDraw.DrawLine(int.Parse(_commandList[1]),
                             int.Parse(_commandList[2])); // use the index to determine values for shape
                         //commandLine.Text = (@"Line has been drawn");
                     }
@@ -157,7 +157,7 @@ namespace GraphicalProgrammingEnvironment
                     }
                     else
                     {
-                        squareDraw.DrawSquare(int.Parse(_commandList[1]));
+                        _squareDraw.DrawSquare(int.Parse(_commandList[1]));
                         //commandLine.Text = (@"Square has been drawn");
                     }
                 }
@@ -176,7 +176,7 @@ namespace GraphicalProgrammingEnvironment
                     }
                     else
                     {
-                        rectangleDraw.DrawRectangle(int.Parse(_commandList[1]),
+                        _rectangleDraw.DrawRectangle(int.Parse(_commandList[1]),
                             int.Parse(_commandList[2]));
                         //commandLine.Text = (@"Rectangle has been drawn");
                     }
@@ -196,7 +196,7 @@ namespace GraphicalProgrammingEnvironment
                     }
                     else
                     {
-                        circleDraw.DrawCircle(int.Parse(_commandList[1]));
+                        _circleDraw.DrawCircle(int.Parse(_commandList[1]));
                         //commandLine.Text = @"Circle has been drawn.";
                     }
                 }
@@ -207,15 +207,30 @@ namespace GraphicalProgrammingEnvironment
             }
             else if (_commandList[0].Equals("fill"))
             {
-                fillShape.CheckFill(true);
+                Fill.CheckFill(true);
             }
             else if (_commandList[0].Equals("filloff"))
             {
-                fillShape.CheckFill(false);
+                Fill.CheckFill(false);
             }
             else if (_commandList[0].Equals("triangle"))
             {
-                DrawTriangle();
+                try
+                {
+                    if (_commandList.Length > 5)
+                    {
+                        MessageBox.Show(@"Too many parameters.");
+                    }
+                    else
+                    {
+                        _triangleDraw.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
+                            int.Parse(_commandList[3]), int.Parse(_commandList[4]));
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    MessageBox.Show(@"Must enter 4 numbers after command.");
+                }
             }
             else if (_commandList[0].Equals("pencolour"))
             {
@@ -223,7 +238,7 @@ namespace GraphicalProgrammingEnvironment
             }
             else if (_commandList[0].Equals("reset"))
             {
-                ResetPen();
+                Reset.CheckReset(true);
             }
             else if (_commandList[0].Equals("clear"))
             {
@@ -256,7 +271,7 @@ namespace GraphicalProgrammingEnvironment
                 }
                 else
                 {
-                    _myCanvas.MoveTo(int.Parse(_commandList[1]),
+                    MoveToClass.MoveTo(int.Parse(_commandList[1]),
                         int.Parse(_commandList[2]));
                 }
             }
@@ -266,38 +281,13 @@ namespace GraphicalProgrammingEnvironment
             }
         }
 
-        private void DrawTriangle()
-        {
-            try
-            {
-                if (_commandList.Length > 5)
-                {
-                    MessageBox.Show(@"Too many parameters.");
-                }
-                else
-                {
-                    _myCanvas.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
-                        int.Parse(_commandList[3]), int.Parse(_commandList[4]));
-                }
-            }
-            catch (IndexOutOfRangeException)
-            {
-                MessageBox.Show(@"Must enter 4 numbers after command.");
-            }
-        }
-
         /// <summary>
         /// Method to clear the bitmap on command
         /// </summary>
         private void ClearImage()
         {
-            var myGraphics = Graphics.FromImage(_outputBitMap);
+            var myGraphics = Graphics.FromImage(OutputBitMap);
             myGraphics.Clear(Color.AliceBlue);
-        }
-
-        private void ResetPen()
-        {
-            _myCanvas.ResetPen(0, 0);
         }
 
         private void PenColour()
