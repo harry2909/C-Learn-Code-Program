@@ -25,6 +25,10 @@ namespace GraphicalProgrammingEnvironment
             _xPos = _yPos = 0;
             PenColourClass.MyPen = new Pen(Color.Black, 1); // create a standard pen
         }
+        
+        public Rectangle()
+        {
+        }
 
         /// <summary>
         /// This method draws the rectangle based on user input.

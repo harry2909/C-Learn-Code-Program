@@ -22,6 +22,10 @@ namespace GraphicalProgrammingEnvironment
             _xPos = _yPos = 0; // set xpos and ypos to 0 to begin with
             PenColourClass.MyPen = new Pen(Color.Black, 1); // create a standard pen
         }
+        
+        public Circle()
+        {
+        }
 
         /// <summary>
         /// Public method used to draw the line. Uses the xpos and ypos from moveto class.
