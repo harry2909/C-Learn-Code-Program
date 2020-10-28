@@ -35,7 +35,6 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         public Form1()
         {
-            
             InitializeComponent();
             _circleDraw = new Circle(Graphics.FromImage(OutputBitMap));
             _squareDraw = new Square(Graphics.FromImage(OutputBitMap));
@@ -61,6 +60,7 @@ namespace GraphicalProgrammingEnvironment
                         {
                             MessageBox.Show(@"Program area empty!");
                         }
+
                         try
                         {
                             //_commandList = command.Split(" ");
@@ -114,7 +114,6 @@ namespace GraphicalProgrammingEnvironment
                         ProcessCommands();
                         break;
                 }
-
             }
         }
 
@@ -149,7 +148,7 @@ namespace GraphicalProgrammingEnvironment
                     {
                         MessageBox.Show(@"Too many parameters.");
                     }
-                    
+
                     else
                     {
                         try
@@ -166,9 +165,7 @@ namespace GraphicalProgrammingEnvironment
                 catch (IndexOutOfRangeException) // catch if no number has been entered after command
                 {
                     MessageBox.Show(@"Must enter 2 numbers after command.");
-                    
                 }
-                
             }
             // draw line commands
             else if (_commandList[0].Equals("drawline"))
@@ -185,7 +182,8 @@ namespace GraphicalProgrammingEnvironment
                         {
                             _lineDraw.DrawLine(int.Parse(_commandList[1]),
                                 int.Parse(_commandList[2]));
-                        }catch (FormatException)
+                        }
+                        catch (FormatException)
                         {
                             MessageBox.Show(@"Parameters must be a number!");
                         }
@@ -210,7 +208,8 @@ namespace GraphicalProgrammingEnvironment
                         try
                         {
                             _squareDraw.DrawSquare(int.Parse(_commandList[1]));
-                        } catch (FormatException)
+                        }
+                        catch (FormatException)
                         {
                             MessageBox.Show(@"Parameters must be a number!");
                         }
@@ -236,7 +235,8 @@ namespace GraphicalProgrammingEnvironment
                         {
                             _rectangleDraw.DrawRectangle(int.Parse(_commandList[1]),
                                 int.Parse(_commandList[2]));
-                        } catch (FormatException)
+                        }
+                        catch (FormatException)
                         {
                             MessageBox.Show(@"Parameters must be a number!");
                         }
@@ -261,7 +261,8 @@ namespace GraphicalProgrammingEnvironment
                         try
                         {
                             _circleDraw.DrawCircle(int.Parse(_commandList[1]));
-                        } catch (FormatException)
+                        }
+                        catch (FormatException)
                         {
                             MessageBox.Show(@"Parameters must be a number!");
                         }
@@ -299,7 +300,8 @@ namespace GraphicalProgrammingEnvironment
                         {
                             _triangleDraw.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
                                 int.Parse(_commandList[3]), int.Parse(_commandList[4]));
-                        } catch (FormatException)
+                        }
+                        catch (FormatException)
                         {
                             MessageBox.Show(@"Parameters must be a number!");
                         }
@@ -487,6 +489,7 @@ namespace GraphicalProgrammingEnvironment
                 {
                     MessageBox.Show(@"Program area empty!");
                 }
+
                 //_commandList = command.Split(" ");
                 using (StringReader programRead = new StringReader(programArea.Text))
                 {

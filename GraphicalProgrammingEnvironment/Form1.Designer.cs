@@ -114,6 +114,7 @@
             // 
             // runButton
             // 
+            this.runButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.runButton.Location = new System.Drawing.Point(27, 427);
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(75, 32);
@@ -144,6 +145,8 @@
             // 
             // saveButton
             // 
+            this.saveButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.saveButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.saveButton.Location = new System.Drawing.Point(27, 22);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 32);
@@ -154,6 +157,7 @@
             // 
             // loadButton
             // 
+            this.loadButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.loadButton.Location = new System.Drawing.Point(111, 22);
             this.loadButton.Name = "loadButton";
             this.loadButton.Size = new System.Drawing.Size(75, 32);
@@ -188,7 +192,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.BackColor = System.Drawing.Color.LightBlue;
             this.ClientSize = new System.Drawing.Size(947, 652);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.fillCheckBox);
