@@ -4,9 +4,9 @@ using System.Drawing;
 namespace GraphicalProgrammingEnvironment
 {
     /// <summary>
-    /// Class to draw triangle
+    /// Class to draw triangle extends shape class
     /// </summary>
-    public class Triangle
+    public class Triangle : Shape
     {
         /// <summary>
         /// Define variables
@@ -38,7 +38,7 @@ namespace GraphicalProgrammingEnvironment
         /// <param name="y">y point</param>
         /// <param name="distance">distance between points</param>
         /// <param name="angle">rotation of triangle</param>
-        public void DrawTriangle(int x, int y, int distance, float angle)
+        public override void DrawTriangle(int x, int y, int distance, float angle)
         {
             if (Reset._reset)
             {

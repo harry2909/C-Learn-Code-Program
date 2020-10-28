@@ -23,6 +23,12 @@
         {
             width = 0;
         }
+
+        public virtual void DrawTriangle(int x, int y, int distance, float angle)
+        {
+            x = y = distance = 0;
+            angle = 0;
+        }
         
     }
 }

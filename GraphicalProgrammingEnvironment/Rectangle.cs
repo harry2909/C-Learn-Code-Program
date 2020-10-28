@@ -3,7 +3,7 @@
 namespace GraphicalProgrammingEnvironment
 {
     /// <summary>
-    /// Class to draw rectangle
+    /// Class to draw rectangle extends shape class
     /// </summary>
     public class Rectangle : Shape
     {

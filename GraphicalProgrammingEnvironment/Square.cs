@@ -3,7 +3,7 @@
 namespace GraphicalProgrammingEnvironment
 {
     /// <summary>
-    /// Class to draw a square
+    /// Class to draw a square extends shape class
     /// </summary>
     public class Square : Shape
     {

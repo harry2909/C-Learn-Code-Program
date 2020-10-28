@@ -2,6 +2,9 @@
 
 namespace GraphicalProgrammingEnvironment
 {
+    /// <summary>
+    /// Class to create circle extends shape class
+    /// </summary>
     public class Circle : Shape
     {
         /// <summary>

@@ -2,6 +2,9 @@
 
 namespace GraphicalProgrammingEnvironment
 {
+    /// <summary>
+    /// Class to draw a line extends shape class
+    /// </summary>
     public class LineDrawClass : Shape
     {
         /// <summary>
