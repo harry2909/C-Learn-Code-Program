@@ -30,8 +30,12 @@ namespace GraphicalProgrammingEnvironment
 
         private string _command;
 
+        /// <summary>
+        /// Method to initialise all variables.
+        /// </summary>
         public Form1()
         {
+            
             InitializeComponent();
             _circleDraw = new Circle(Graphics.FromImage(OutputBitMap));
             _squareDraw = new Square(Graphics.FromImage(OutputBitMap));
@@ -56,10 +60,9 @@ namespace GraphicalProgrammingEnvironment
                         try
                         {
                             //_commandList = command.Split(" ");
-                            //int lineCount = 0;
-                            String line;
                             using (StringReader programRead = new StringReader(programArea.Text))
                             {
+                                String line;
                                 while ((line = programRead.ReadLine()) != null)
                                 {
                                     _commandList = line.Split(" ");
@@ -109,10 +112,6 @@ namespace GraphicalProgrammingEnvironment
                         break;
                 }
 
-                // catch (Exception)
-                // {
-                //     MessageBox.Show(@"Command not recognised! Type help to list all commands.");
-                // }
             }
         }
 
@@ -392,7 +391,7 @@ namespace GraphicalProgrammingEnvironment
         /// Create method to load in a file using openfiledialogue and then use a stream reader to display in textbox
         /// </summary>
         /// <param name="sender">The object that will trigger event</param>
-        /// <param name="e">Key event data</param>
+        /// <param name="e">Event data</param>
         private void loadButton_Click(object sender, EventArgs e)
         {
             try
@@ -424,6 +423,42 @@ namespace GraphicalProgrammingEnvironment
             catch (FileNotFoundException)
             {
                 MessageBox.Show(@"No such file to load!");
+            }
+        }
+
+        /// <summary>
+        /// Method to change fill to true or false depending on checkbox state.
+        /// </summary>
+        /// <param name="sender">The object that will trigger event (checkbox)</param>
+        /// <param name="e">Event data</param>
+        private void fillCheckBox_Click(object sender, EventArgs e)
+        {
+            Fill.CheckFill(fillCheckBox.Checked);
+        }
+
+        private void runButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (programArea.Text == String.Empty)
+                {
+                    MessageBox.Show(@"Program area empty!");
+                }
+                //_commandList = command.Split(" ");
+                using (StringReader programRead = new StringReader(programArea.Text))
+                {
+                    String line;
+                    while ((line = programRead.ReadLine()) != null)
+                    {
+                        _commandList = line.Split(" ");
+                        //lineCount++;
+                        ProcessCommands();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(@"Input box empty");
             }
         }
     }

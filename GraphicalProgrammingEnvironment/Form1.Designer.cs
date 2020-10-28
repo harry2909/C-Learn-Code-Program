@@ -120,6 +120,7 @@
             this.runButton.TabIndex = 8;
             this.runButton.Text = "Run";
             this.runButton.UseVisualStyleBackColor = true;
+            this.runButton.Click += new System.EventHandler(this.runButton_Click);
             // 
             // penBox
             // 
@@ -164,11 +165,12 @@
             // fillCheckBox
             // 
             this.fillCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.fillCheckBox.Location = new System.Drawing.Point(245, 440);
+            this.fillCheckBox.Location = new System.Drawing.Point(241, 440);
             this.fillCheckBox.Name = "fillCheckBox";
             this.fillCheckBox.Size = new System.Drawing.Size(34, 21);
             this.fillCheckBox.TabIndex = 14;
             this.fillCheckBox.UseVisualStyleBackColor = true;
+            this.fillCheckBox.Click += new System.EventHandler(this.fillCheckBox_Click);
             // 
             // label2
             // 
