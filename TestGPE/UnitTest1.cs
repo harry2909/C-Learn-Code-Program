@@ -15,8 +15,8 @@ namespace TestGPE
     public class UnitTest1
     {
         private static readonly Bitmap OutputBitMap = new Bitmap(840, 680);
-        LineDrawClass _lineDraw = new LineDrawClass(Graphics.FromImage(OutputBitMap));
-        Rectangle _rectangleDraw = new Rectangle(Graphics.FromImage(OutputBitMap));
+        readonly LineDrawClass _lineDraw = new LineDrawClass(Graphics.FromImage(OutputBitMap));
+        readonly Rectangle _rectangleDraw = new Rectangle(Graphics.FromImage(OutputBitMap));
 
         /// <summary>
         /// Method to test that the array is splitting correctly

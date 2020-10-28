@@ -57,6 +57,10 @@ namespace GraphicalProgrammingEnvironment
                 switch (commandLine.Text)
                 {
                     case @"run":
+                        if (programArea.Text == String.Empty)
+                        {
+                            MessageBox.Show(@"Program area empty!");
+                        }
                         try
                         {
                             //_commandList = command.Split(" ");
