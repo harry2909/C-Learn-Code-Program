@@ -15,11 +15,8 @@ namespace TestGPE
     public class UnitTest1
     {
         private static readonly Bitmap OutputBitMap = new Bitmap(840, 680);
-        Circle _circleDraw = new Circle(Graphics.FromImage(OutputBitMap));
-        Square _squareDraw = new Square(Graphics.FromImage(OutputBitMap));
         LineDrawClass _lineDraw = new LineDrawClass(Graphics.FromImage(OutputBitMap));
         Rectangle _rectangleDraw = new Rectangle(Graphics.FromImage(OutputBitMap));
-        Triangle _triangleDraw = new Triangle(Graphics.FromImage(OutputBitMap));
 
         /// <summary>
         /// Method to test that the array is splitting correctly
@@ -86,7 +83,7 @@ namespace TestGPE
             Reset.CheckReset(true);
 
             String a = "20 30";
-            String[] _commandList = a.Split(" ");
+            String[] commandList = a.Split(" ");
 
 
             if (Reset._reset) // if reset bool is set to true
@@ -95,8 +92,8 @@ namespace TestGPE
                 MoveToClass._yPos = 0; // set reset bool back to false
             }
 
-            _rectangleDraw.DrawRectangle(int.Parse(_commandList[0]),
-                int.Parse(_commandList[1]));
+            _rectangleDraw.DrawRectangle(int.Parse(commandList[0]),
+                int.Parse(commandList[1]));
             Assert.IsTrue(MoveToClass._xPos == 0 && MoveToClass._yPos == 0);
             Assert.IsFalse(MoveToClass._xPos == 20 && MoveToClass._xPos == 30);
         }
