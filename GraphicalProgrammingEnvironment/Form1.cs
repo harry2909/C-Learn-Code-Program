@@ -31,7 +31,7 @@ namespace GraphicalProgrammingEnvironment
         private string _command;
 
         /// <summary>
-        /// Method to initialise all variables.
+        /// Method to instantiate all objects.
         /// </summary>
         public Form1()
         {

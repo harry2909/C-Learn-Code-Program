@@ -2,7 +2,7 @@
 
 namespace GraphicalProgrammingEnvironment
 {
-    public class LineDrawClass
+    public class LineDrawClass : Shape
     {
         /// <summary>
         /// Define variables to be used in class.
@@ -31,7 +31,7 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         /// <param name="toX">The x pos to move to</param>
         /// <param name="toY">The y pos to move to</param>
-        public void DrawLine(int toX, int toY)
+        public override void DrawLine(int toX, int toY)
         {
             if (Reset._reset) // if reset bool is set to true
             {

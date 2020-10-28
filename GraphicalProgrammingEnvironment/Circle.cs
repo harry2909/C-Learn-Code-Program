@@ -2,7 +2,7 @@
 
 namespace GraphicalProgrammingEnvironment
 {
-    public class Circle
+    public class Circle : Shape
     {
         /// <summary>
         /// Define variables.
@@ -27,11 +27,7 @@ namespace GraphicalProgrammingEnvironment
         {
         }
 
-        /// <summary>
-        /// Public method used to draw the line. Uses the xpos and ypos from moveto class.
-        /// </summary>
-        /// <param name="radius">Set radius of circle</param>
-        public void DrawCircle(float radius)
+        public override void DrawCircle(float radius)
         {
             if (Reset._reset) // if reset bool is set to true
             {
@@ -48,5 +44,7 @@ namespace GraphicalProgrammingEnvironment
                 _myGraph.FillEllipse(brush, MoveToClass._xPos, MoveToClass._yPos, radius + radius, radius + radius);
             }
         }
+
+        
     }
 }

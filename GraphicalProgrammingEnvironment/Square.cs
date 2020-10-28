@@ -5,7 +5,7 @@ namespace GraphicalProgrammingEnvironment
     /// <summary>
     /// Class to draw a square
     /// </summary>
-    public class Square
+    public class Square : Shape
     {
         /// <summary>
         /// Define variables
@@ -34,7 +34,7 @@ namespace GraphicalProgrammingEnvironment
         /// Method to draw square
         /// </summary>
         /// <param name="width">Specify width of square</param>
-        public void DrawSquare(int width)
+        public override void DrawSquare(int width)
         {
             if (Reset._reset) // if reset bool is set to true
             {

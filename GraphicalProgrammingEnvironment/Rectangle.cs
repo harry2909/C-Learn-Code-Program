@@ -5,7 +5,7 @@ namespace GraphicalProgrammingEnvironment
     /// <summary>
     /// Class to draw rectangle
     /// </summary>
-    public class Rectangle
+    public class Rectangle : Shape
     {
         /// <summary>
         /// Define variables
@@ -35,7 +35,7 @@ namespace GraphicalProgrammingEnvironment
         /// </summary>
         /// <param name="width">Width value of rectangle</param>
         /// <param name="height">Height value of rectangle</param>
-        public void DrawRectangle(int width, int height)
+        public override void DrawRectangle(int width, int height)
         {
             if (Reset._reset) // if reset bool is set to true
             {
