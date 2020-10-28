@@ -149,16 +149,26 @@ namespace GraphicalProgrammingEnvironment
                     {
                         MessageBox.Show(@"Too many parameters.");
                     }
+                    
                     else
                     {
-                        MoveToClass.MoveTo(int.Parse(_commandList[1]),
-                            int.Parse(_commandList[2]));
+                        try
+                        {
+                            MoveToClass.MoveTo(int.Parse(_commandList[1]),
+                                int.Parse(_commandList[2]));
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show(@"Parameters must be a number!");
+                        }
                     }
                 }
                 catch (IndexOutOfRangeException) // catch if no number has been entered after command
                 {
                     MessageBox.Show(@"Must enter 2 numbers after command.");
+                    
                 }
+                
             }
             // draw line commands
             else if (_commandList[0].Equals("drawline"))
@@ -171,8 +181,14 @@ namespace GraphicalProgrammingEnvironment
                     }
                     else
                     {
-                        _lineDraw.DrawLine(int.Parse(_commandList[1]),
-                            int.Parse(_commandList[2]));
+                        try
+                        {
+                            _lineDraw.DrawLine(int.Parse(_commandList[1]),
+                                int.Parse(_commandList[2]));
+                        }catch (FormatException)
+                        {
+                            MessageBox.Show(@"Parameters must be a number!");
+                        }
                     }
                 }
                 catch (IndexOutOfRangeException)
@@ -191,7 +207,13 @@ namespace GraphicalProgrammingEnvironment
                     }
                     else
                     {
-                        _squareDraw.DrawSquare(int.Parse(_commandList[1]));
+                        try
+                        {
+                            _squareDraw.DrawSquare(int.Parse(_commandList[1]));
+                        } catch (FormatException)
+                        {
+                            MessageBox.Show(@"Parameters must be a number!");
+                        }
                     }
                 }
                 catch (IndexOutOfRangeException)
@@ -210,8 +232,14 @@ namespace GraphicalProgrammingEnvironment
                     }
                     else
                     {
-                        _rectangleDraw.DrawRectangle(int.Parse(_commandList[1]),
-                            int.Parse(_commandList[2]));
+                        try
+                        {
+                            _rectangleDraw.DrawRectangle(int.Parse(_commandList[1]),
+                                int.Parse(_commandList[2]));
+                        } catch (FormatException)
+                        {
+                            MessageBox.Show(@"Parameters must be a number!");
+                        }
                     }
                 }
                 catch (IndexOutOfRangeException)
@@ -230,7 +258,13 @@ namespace GraphicalProgrammingEnvironment
                     }
                     else
                     {
-                        _circleDraw.DrawCircle(int.Parse(_commandList[1]));
+                        try
+                        {
+                            _circleDraw.DrawCircle(int.Parse(_commandList[1]));
+                        } catch (FormatException)
+                        {
+                            MessageBox.Show(@"Parameters must be a number!");
+                        }
                     }
                 }
                 catch (IndexOutOfRangeException)
@@ -261,8 +295,14 @@ namespace GraphicalProgrammingEnvironment
                     }
                     else
                     {
-                        _triangleDraw.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
-                            int.Parse(_commandList[3]), int.Parse(_commandList[4]));
+                        try
+                        {
+                            _triangleDraw.DrawTriangle(int.Parse(_commandList[1]), int.Parse(_commandList[2]),
+                                int.Parse(_commandList[3]), int.Parse(_commandList[4]));
+                        } catch (FormatException)
+                        {
+                            MessageBox.Show(@"Parameters must be a number!");
+                        }
                     }
                 }
                 catch (IndexOutOfRangeException)
