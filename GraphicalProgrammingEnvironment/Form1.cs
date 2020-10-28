@@ -109,7 +109,6 @@ namespace GraphicalProgrammingEnvironment
                         commandLine.Text = "";
                         break;
                     default:
-                        programArea.Text = "";
                         _command = commandLine.Text.Trim().ToLower();
                         _commandList = _command.Split(" ");
                         ProcessCommands();
